@@ -1,18 +1,16 @@
 <template>
   <label class="i-toggle">
-    <input type="checkbox" v-model="value">
+    <input type="checkbox" ref="target" :value="value">
     <span class="i-toggle--slider"></span>
   </label>
 </template>
 
 <script>
+import toggle from '@/mixins/toggle'
+
 export default {
   name: 'iToggle',
-  data () {
-    return {
-      value: false
-    }
-  }
+  mixins: [ toggle ]
 }
 
 </script>
