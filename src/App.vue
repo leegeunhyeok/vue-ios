@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <iToggle></iToggle>
+    <iToggle :value="value" @onChange="value = $event"/>
   </div>
 </template>
 
@@ -9,6 +9,11 @@ import iToggle from '@/components/iToggle/iToggle'
 
 export default {
   name: 'app',
+  data () {
+    return {
+      value: false
+    }
+  },
   components: {
     iToggle
   }
