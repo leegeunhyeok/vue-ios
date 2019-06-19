@@ -29,15 +29,20 @@ npm install vue-ios
 ```html
 <template>
   <div id="app">
-    <iToggle/>
+    <iToggle :value="value" @onChange="value = $event"/>
   </div>
 </template>
 
 <script>
-import { iToggle } from 'vue-ios'
+import iToggle from '@/components/iToggle/iToggle'
 
 export default {
   name: 'app',
+  data () {
+    return {
+      value: false
+    }
+  },
   components: {
     iToggle
   }
