@@ -1,4 +1,4 @@
-import iToggle from './components/iToggle.vue'
+import iToggle from './components/iToggle/iToggle.vue'
 
 const components = {
   iToggle

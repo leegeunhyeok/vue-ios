@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import iToggle from './components/iToggle'
+import iToggle from '@/components/iToggle/iToggle'
 
 export default {
   name: 'app',
