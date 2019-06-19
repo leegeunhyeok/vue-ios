@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/common/style/common.scss';
+@import '../../common/style/common.scss';
 $toggle-color-active: #34c759;
 $toggle-color-deactive: #eaeaeb;
 
