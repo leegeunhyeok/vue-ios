@@ -1,3 +1,4 @@
+import { resolve } from 'path'
 import commonjs from 'rollup-plugin-commonjs'
 import vue from 'rollup-plugin-vue'
 import buble from 'rollup-plugin-buble'
@@ -10,7 +11,7 @@ export default {
   },
   plugins: [
     alias({
-      '@': './src'
+      '@': resolve(__dirname, '../src')
     }),
     commonjs(),
     vue({
