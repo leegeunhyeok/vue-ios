@@ -17,10 +17,12 @@ export default {
 
 <style lang="scss">
 @import '../../common/style/common.scss';
+@import '../../common/style/mixin.scss';
 $toggle-color-active: #34c759;
 $toggle-color-deactive: #eaeaeb;
 
 .i-toggle {
+  @include tap-highlight-disable;
   position: relative;
   display: block;
   width: 5rem;
