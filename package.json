@@ -1,6 +1,6 @@
 {
   "name": "vue-ios",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1-alpha.3",
   "description": "iOS Style components library for Vue.js",
   "main": "dist/vue-ios.umd.js",
   "module": "dist/vue-ios.esm.js",
