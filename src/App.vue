@@ -1,21 +1,26 @@
 <template>
-  <div id="app">
-    <div>vue-ios</div>
-    <iToggle :value="value" @onChange="value = $event"/>
-  </div>
+  <iView id="app">
+    <iNavigationBar :title="appTitle"/>
+    <iToggle :value="toggleValue" @onChange="toggleValue = $event"/>
+  </iView>
 </template>
 
 <script>
-import iToggle from '@/components/iToggle/iToggle'
+import iView from '@/components/iView'
+import iNavigationBar from '@/components/iNavigationBar'
+import iToggle from '@/components/iToggle'
 
 export default {
   name: 'app',
   data () {
     return {
-      value: false
+      appTitle: 'iOS Vue',
+      toggleValue: false
     }
   },
   components: {
+    iView,
+    iNavigationBar,
     iToggle
   },
   mounted () {
@@ -34,12 +39,18 @@ export default {
 </script>
 
 <style lang="scss">
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
