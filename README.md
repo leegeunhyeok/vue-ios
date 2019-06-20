@@ -34,7 +34,7 @@ npm install vue-ios
 </template>
 
 <script>
-import iToggle from '@/components/iToggle/iToggle'
+import { iToggle } from 'vue-ios'
 
 export default {
   name: 'app',
