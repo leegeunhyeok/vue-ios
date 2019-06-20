@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div>vue-ios</div>
     <iToggle :value="value" @onChange="value = $event"/>
   </div>
 </template>
@@ -16,6 +17,18 @@ export default {
   },
   components: {
     iToggle
+  },
+  mounted () {
+    const metaContents = [
+      'initial-scale=1.0',
+      'width=device-width',
+      'user-scalable=no',
+      'maximum-scale=1'
+    ]
+    const meta = document.createElement('meta')
+    meta.name = 'viewport'
+    meta.content = metaContents.join(',')
+    document.head.appendChild(meta)
   }
 }
 </script>
