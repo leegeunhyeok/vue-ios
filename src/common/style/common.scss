@@ -1,2 +1,16 @@
 $dark-mode-background: #1c1c1e;
 $transition-speed: .3s;
+
+body {
+  @media only screen and (min-width: 320px) {
+    font-size: 12px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    font-size: 12px;
+  }
+
+  @media only screen and (min-width: 1224px) {
+    font-size: 12px;
+  }
+}
