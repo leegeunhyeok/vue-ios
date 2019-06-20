@@ -25,7 +25,7 @@ $toggle-color-deactive: #eaeaeb;
   @include tap-highlight-disable;
   position: relative;
   display: block;
-  width: 3.333rem;
+  width: 3.5rem;
   height: 2.166rem;
 
   input[type=checkbox] {
@@ -57,7 +57,7 @@ $toggle-color-deactive: #eaeaeb;
         left: 0.163rem;
         bottom: 0.166rem;
         border-radius: 50%;
-        box-shadow: 0px 0.1rem 0.166rem rgba(0, 0, 0, .2);
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, .2);
         background-color: #fff;
         -webkit-transition: $transition-speed;
            -moz-transition: $transition-speed;
@@ -74,7 +74,7 @@ $toggle-color-deactive: #eaeaeb;
       }
 
       & + span.i-toggle--slider:before {
-        transform: translateX(1.166rem);
+        transform: translateX(1.333rem);
       }
     }
   }
