@@ -35,9 +35,11 @@ npm install vue-ios
 </template>
 
 <script>
-import iView from '@/components/iView'
-import iNavigationBar from '@/components/iNavigationBar'
-import iToggle from '@/components/iToggle'
+import {
+  iView,
+  iNavigationBar,
+  iToggle
+} from 'vue-ios'
 
 export default {
   name: 'app',
