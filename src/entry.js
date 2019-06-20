@@ -1,7 +1,11 @@
-import iToggle from './components/iToggle/iToggle.vue'
+import iNavigationBar from './components/iNavigationBar.vue'
+import iToggle from './components/iToggle.vue'
+import iView from './components/iView.vue'
 
 const components = {
-  iToggle
+  iNavigationBar,
+  iToggle,
+  iView
 }
 
 export function install(Vue) {
@@ -28,5 +32,7 @@ if (GlobalVue) {
 }
 
 export {
-  iToggle
+  iNavigationBar,
+  iToggle,
+  iView
 }
