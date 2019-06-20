@@ -2,11 +2,11 @@
   <div class="i-navigation-bar">
     <transition>
       <div class="i-navigation-bar__default"
+        :style="navigationStyle"
         v-if="!extend"
       >
         <div class="i-navigation-bar--mask"
-          :style="navigationStyle"
-          :class="navigationClass"
+          :class="{ blur }"
         />
 
         <div class="i-navigation-bar--title">
@@ -80,7 +80,7 @@ export default {
       )
     },
     watchScrollStatus () {
-      const height = this.pixel * 2
+      // const height = this.pixel * 2
     }
   }
 }
