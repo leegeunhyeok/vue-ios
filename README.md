@@ -29,7 +29,7 @@ npm install vue-ios
 ```html
 <template>
   <iView id="app">
-    <iNavigationBar :title="appTitle"/>
+    <iNavigationBar :title="appTitle" :largeTitle="largeTitle"/>
     <iToggle :value="toggleValue" @onChange="toggleValue = $event"/>
   </iView>
 </template>
@@ -46,6 +46,7 @@ export default {
   data () {
     return {
       appTitle: 'iOS Vue',
+      largeTitle: 'Vue.js',
       toggleValue: false
     }
   },
