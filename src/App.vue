@@ -1,7 +1,39 @@
 <template>
   <iView id="app">
-    <iNavigationBar :title="appTitle"/>
+    <iNavigationBar :title="appTitle" :largeTitle="largeTitle"/>
     <iToggle :value="toggleValue" @onChange="toggleValue = $event"/>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
+    <h2>Test</h2>
   </iView>
 </template>
 
@@ -15,6 +47,7 @@ export default {
   data () {
     return {
       appTitle: 'iOS Vue',
+      largeTitle: 'Vue.js',
       toggleValue: false
     }
   },
