@@ -2,10 +2,10 @@
   <div class="i-navigation-bar">
     <transition>
       <div class="i-navigation-bar__default"
-        :style="navigationStyle"
         v-if="!extend"
       >
         <div class="i-navigation-bar--mask"
+          :style="navigationStyle"
           :class="{ blur }"
         />
 
