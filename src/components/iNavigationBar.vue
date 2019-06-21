@@ -1,5 +1,5 @@
 <template>
-  <div class="i-navigation-bar">
+  <div class="i-navigation-bar" ref="iNav">
     <transition>
       <div class="i-navigation-bar__default"
         v-if="!extend"
@@ -40,15 +40,13 @@ export default {
     opacity: {
       type: Number,
       default: 0.5
-    },
-    extend: {
-      type: Boolean,
-      default: false
     }
   },
   data () {
     return {
-      pixel: 12
+      pixel: 12,
+      navbarHeight: 40,
+      extend: true
     }
   },
   computed: {
@@ -64,23 +62,28 @@ export default {
     }
   },
   mounted () {
-    this.getFontPixel()
-    window.addEventListener('resize', this.getFontPixel)
+    this.getStyleInformation()
+    this.watchScrollStatus()
+    window.addEventListener('resize', this.getStyleInformation)
     window.addEventListener('scroll', this.watchScrollStatus)
   },
   beforeDestroy () {
-    window.addEventListener('resize', this.getFontPixel)
+    window.addEventListener('resize', this.getStyleInformation)
     window.removeEventListener('scroll', this.watchScrollStatus)
   },
   methods: {
-    getFontPixel () {
+    getStyleInformation () {
       this.pixel = parseFloat(
         getComputedStyle(document.body)
           .getPropertyValue('font-size')
       )
+      this.navbarHeight = parseFloat(
+        getComputedStyle(this.$refs.iNav)
+          .getPropertyValue('height')
+      )
     },
     watchScrollStatus () {
-      // const height = this.pixel * 2
+      this.extend = !(window.pageYOffset > this.navbarHeight)
     }
   }
 }
