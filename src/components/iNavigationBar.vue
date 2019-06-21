@@ -147,14 +147,9 @@ export default {
       line-height: 2.5rem;
     }
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 768px), (min-width: 1224px) {
       height: 3rem;
       line-height: 3rem;
-    }
-
-    @media only screen and (min-width: 1224px) {
-      height: 3.5rem;
-      line-height: 3.5rem;
     }
 
     .i-navigation-bar--mask {
