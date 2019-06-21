@@ -14,7 +14,13 @@
         </div>
       </div>
     </transition>
-    <slot/>
+    <div class="i-navigation-bar__large"
+      :style="navigationStyle"
+    >
+      <h2 class="i-navigation-bar__large--title">
+        {{ 'Large' }}
+      </h2>
+    </div>
   </div>
 </template>
 
@@ -97,15 +103,15 @@ export default {
   margin-bottom: 10px;
 
   @media only screen and (min-width: 320px) {
-    padding-top: 2.5rem;
+    padding-top: 8.5rem;
   }
 
   @media only screen and (min-width: 768px) {
-    padding-top: 3rem;
+    padding-top: 9rem;
   }
 
   @media only screen and (min-width: 1224px) {
-    padding-top: 3.5rem;
+    padding-top: 9.5rem;
   }
 
   .i-navigation-bar__default {
@@ -151,6 +157,22 @@ export default {
       height: 100%;
       color: #000;
       font-size: .9rem;
+      font-weight: bold;
+    }
+  }
+
+  .i-navigation-bar__large {
+    position: absolute;
+    width: 100%;
+    height: 8rem;
+    top: 0;
+    left: 0;
+
+    .i-navigation-bar__large--title {
+      text-align: left;
+      margin-top: 3rem;
+      margin-left: 1rem;
+      font-size: 2rem;
       font-weight: bold;
     }
   }
