@@ -209,6 +209,8 @@ export default {
     width: 100%;
     height: 8rem;
     background-color: $light-background-color;
+    border-bottom: 1px solid;
+    border-color: $light-border-color;
 
     .i-navigation-bar__large--title {
       position: absolute;
