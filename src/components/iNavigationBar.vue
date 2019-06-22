@@ -3,7 +3,7 @@
     :class="{ 'not-extended': !extended }"
   >
     <div class="i-navigation-bar__default"
-      :class="{ 'navbar-border': navbarBorder }"
+      :class="{ 'navbar-border': defaultNavbarBorder }"
       ref="iNavDefault"
     >
       <div class="i-navigation-bar--mask"
@@ -55,7 +55,7 @@ export default {
       navbarHeight: 120,
       defaultNavbarHeight: 40,
       showTitle: true,
-      navbarBorder: false,
+      defaultNavbarBorder: false,
       largeTitlePosition: 0
     }
   },
@@ -101,14 +101,13 @@ export default {
     },
     watchScrollStatus () {
       const pageYOffset = window.pageYOffset
-      this.navbarBorder = pageYOffset > this.navbarHeight / 6 || !this.extended
+      this.defaultNavbarBorder = pageYOffset > this.navbarHeight / 3 || !this.extended
       this.showTitle = pageYOffset + 84 > this.navbarHeight || !this.extended
       if (pageYOffset <= this.defaultNavbarHeight) {
         this.largeTitlePosition = pageYOffset
       } else {
-        // TODO: Scroll speed check
-        const willChangePosition = this.defaultNavbarHeight * 2 - pageYOffset
-        this.largeTitlePosition = willChangePosition < 0 ? 0 : willChangePosition
+        this.largeTitlePosition = this.defaultNavbarHeight < 0 ?
+          0 : this.defaultNavbarHeight
       }
     }
   }
