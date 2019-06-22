@@ -103,7 +103,6 @@ export default {
       if (pageYOffset <= this.defaultNavbarHeight) {
         this.largeTitlePosition = pageYOffset
       } else {
-        const opacity = -(1 - 1 / this.defaultNavbarHeight * pageYOffset) - 0.1
         this.largeTitlePosition = this.defaultNavbarHeight < 0 ?
           0 : this.defaultNavbarHeight
       }
