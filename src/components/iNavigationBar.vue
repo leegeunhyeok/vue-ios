@@ -3,7 +3,7 @@
     :class="{ 'not-extended': !extended }"
   >
     <div class="i-navigation-bar__default"
-      :class="{ 'navbar-border': defaultNavbarBorder }"
+      :style="{ borderColor: `rgba(197, 197, 200, ${ extended ? borderOpacity : 1 })` }"
       ref="iNavDefault"
     >
       <div class="i-navigation-bar--mask"
@@ -56,17 +56,13 @@ export default {
       defaultNavbarHeight: 40,
       showTitle: true,
       defaultNavbarBorder: false,
+      borderOpacity: 0,
       largeTitlePosition: 0
     }
   },
   computed: {
     extended () {
       return !!this.largeTitle
-    },
-    navigationClass () {
-      return {
-        blur: this.blur
-      }
     },
     largeTitleStyle () {
       return {
@@ -103,11 +99,14 @@ export default {
       const pageYOffset = window.pageYOffset
       this.defaultNavbarBorder = pageYOffset > this.navbarHeight / 3 || !this.extended
       this.showTitle = pageYOffset + 84 > this.navbarHeight || !this.extended
+      
       if (pageYOffset <= this.defaultNavbarHeight) {
         this.largeTitlePosition = pageYOffset
       } else {
+        const opacity = -(1 - 1 / this.defaultNavbarHeight * pageYOffset) - 0.1
         this.largeTitlePosition = this.defaultNavbarHeight < 0 ?
           0 : this.defaultNavbarHeight
+        this.borderOpacity = -(1 - 1 / this.defaultNavbarHeight * pageYOffset) - 0.1
       }
     }
   }
@@ -156,15 +155,6 @@ export default {
     z-index: 9995;
     border-bottom: 1px solid;
     border-color: $light-background-color;
-    -webkit-transition: border-color $transition-speed;
-       -moz-transition: border-color $transition-speed;
-        -ms-transition: border-color $transition-speed;
-         -o-transition: border-color $transition-speed;
-            transition: border-color $transition-speed;
-
-    &.navbar-border {
-      border-color: $light-border-color;
-    }
 
     @media only screen and (min-width: 320px) {
       height: 2.5rem;
