@@ -22,6 +22,9 @@
       <h2 class="i-navigation-bar__large--title">
         {{ largeTitle }}
       </h2>
+      <div class="i-navigation-bar__large-area">
+        <!-- Content -->
+      </div>
     </div>
   </div>
 </template>
@@ -192,6 +195,15 @@ export default {
       margin-left: 1rem;
       font-size: 2rem;
       font-weight: bold;
+    }
+    
+    .i-navigation-bar__large-area {
+      position: absolute;
+      top: 6rem;
+      left: 0;
+      width: 100%;
+      height: 2rem;
+      background-color: $light-background-color;
     }
   }
 }
