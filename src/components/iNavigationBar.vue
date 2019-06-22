@@ -4,6 +4,7 @@
   >
     <div class="i-navigation-bar__default"
       :class="{ 'navbar-border': navbarBorder }"
+      ref="iNavDefault"
     >
       <div class="i-navigation-bar--mask"
         :class="{ blur }"
@@ -19,12 +20,14 @@
     <div class="i-navigation-bar__large"
       v-if="extended"
     >
-      <h2 class="i-navigation-bar__large--title">
+      <h2 class="i-navigation-bar__large--title"
+        :style="largeTitleStyle"
+      >
         {{ largeTitle }}
       </h2>
-      <div class="i-navigation-bar__large-area">
-        <!-- Content -->
-      </div>
+    </div>
+    <div class="i-navigation-bar__large-area">
+      <!-- Content -->
     </div>
   </div>
 </template>
@@ -49,9 +52,11 @@ export default {
   data () {
     return {
       pixel: 12,
-      navbarHeight: 40,
+      navbarHeight: 120,
+      defaultNavbarHeight: 40,
       showTitle: true,
-      navbarBorder: false
+      navbarBorder: false,
+      largeTitlePosition: 0
     }
   },
   computed: {
@@ -61,6 +66,11 @@ export default {
     navigationClass () {
       return {
         blur: this.blur
+      }
+    },
+    largeTitleStyle () {
+      return {
+        top: this.navbarHeight / 3 + this.largeTitlePosition + 'px'
       }
     }
   },
@@ -84,10 +94,22 @@ export default {
         getComputedStyle(this.$refs.iNav)
           .getPropertyValue('height')
       )
+      this.defaultNavbarHeight = parseFloat(
+        getComputedStyle(this.$refs.iNavDefault)
+          .getPropertyValue('height')
+      )
     },
     watchScrollStatus () {
-      this.navbarBorder = window.pageYOffset > this.navbarHeight / 6 || !this.extended
-      this.showTitle = window.pageYOffset + 84 > this.navbarHeight || !this.extended
+      const pageYOffset = window.pageYOffset
+      this.navbarBorder = pageYOffset > this.navbarHeight / 6 || !this.extended
+      this.showTitle = pageYOffset + 84 > this.navbarHeight || !this.extended
+      if (pageYOffset <= this.defaultNavbarHeight) {
+        this.largeTitlePosition = pageYOffset
+      } else {
+        // TODO: Scroll speed check
+        const willChangePosition = this.defaultNavbarHeight * 2 - pageYOffset
+        this.largeTitlePosition = willChangePosition < 0 ? 0 : willChangePosition
+      }
     }
   }
 }
@@ -190,9 +212,10 @@ export default {
     background-color: $light-background-color;
 
     .i-navigation-bar__large--title {
+      position: absolute;
       text-align: left;
-      margin-top: 3rem;
-      margin-left: 1rem;
+      margin: 0;
+      padding-left: 1rem;
       font-size: 2rem;
       font-weight: bold;
     }
