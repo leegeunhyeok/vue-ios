@@ -39,6 +39,7 @@
 
 <script>
 import iView from '@/components/iView'
+import iTextField from '@/components/iTextField'
 import iNavigationBar from '@/components/iNavigationBar'
 import iToggle from '@/components/iToggle'
 
@@ -53,6 +54,7 @@ export default {
   },
   components: {
     iView,
+    iTextField,
     iNavigationBar,
     iToggle
   },
