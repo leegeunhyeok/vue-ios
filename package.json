@@ -28,6 +28,8 @@
   },
   "author": "Geunhyeok LEE <dev.ghlee@gmail.com> (https://github.com/leegeunhyeok)",
   "devDependencies": {
+    "@vue/cli": "^3.8.4",
+    "@vue/cli-service-global": "^3.8.4",
     "node-sass": "^4.12.0",
     "rollup": "^1.15.6",
     "rollup-plugin-alias": "^1.5.2",
