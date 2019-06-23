@@ -31,6 +31,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../common/style/common.scss';
 $placeholder-color: #8e8e93;
 
 .i-text-field {
@@ -44,6 +45,11 @@ $placeholder-color: #8e8e93;
     background-color: #e3e3e8;
     border: none;
     border-radius: 6px;
+    -webkit-transition: $transition-speed;
+       -moz-transition: $transition-speed;
+        -ms-transition: $transition-speed;
+         -o-transition: $transition-speed;
+            transition: $transition-speed;
 
     &::placeholder {
       color: $placeholder-color;
@@ -55,6 +61,10 @@ $placeholder-color: #8e8e93;
 
     &::-ms-input-placeholder {
       color: $placeholder-color;
+    }
+
+    &:hover {
+      background-color: #dedee4;
     }
   }
 }
