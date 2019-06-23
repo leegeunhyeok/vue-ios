@@ -27,14 +27,14 @@
       </h2>
     </div>
     <div class="i-navigation-bar__large-area">
-      <!-- Content -->
+      <slot/>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'iAppbar',
+  name: 'iNavigationBar',
   props: {
     title: {
       type: String,
