@@ -1,6 +1,8 @@
 <template>
   <iView id="app">
-    <iNavigationBar :title="appTitle" :largeTitle="largeTitle"/>
+    <iNavigationBar :title="appTitle" :largeTitle="largeTitle">
+      <iTextField slot="largeArea"/>
+    </iNavigationBar>
     <iToggle :value="toggleValue" @onChange="toggleValue = $event"/>
     <h2>Test</h2>
     <h2>Test</h2>
