@@ -1,8 +1,8 @@
 <template>
   <div class="i-text-field">
     <input
-      :type="props"
-      :placeholder="'aa'"
+      :type="type"
+      :placeholder="placeholder"
       :max="max"
       :min="min"
     >
@@ -18,8 +18,7 @@ export default {
       default: 'text'
     },
     placeholder: {
-      type: String,
-      default: ''
+      type: String
     },
     max: {
       type: Number
