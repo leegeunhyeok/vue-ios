@@ -30,7 +30,7 @@ npm install vue-ios
 <template>
   <iView id="app">
     <iNavigationBar :title="appTitle" :largeTitle="largeTitle"/>
-    <iToggle :value="toggleValue" @onChange="toggleValue = $event"/>
+    <iToggle v-model="toggleValue"/>
   </iView>
 </template>
 
