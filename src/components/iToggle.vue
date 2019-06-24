@@ -1,6 +1,10 @@
 <template>
   <label class="i-toggle">
-    <input type="checkbox" ref="target" :value="value">
+    <input type="checkbox"
+      :value="value"
+      :checked="value"
+      @change="change"
+    >
     <span class="i-toggle--slider"></span>
   </label>
 </template>

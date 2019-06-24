@@ -3,7 +3,9 @@
     <iNavigationBar :title="appTitle" :largeTitle="largeTitle">
       <iTextField slot="largeArea"/>
     </iNavigationBar>
-    <iToggle :value="toggleValue" @onChange="toggleValue = $event"/>
+    <iToggle v-model="toggleValue"/>
+    <br>
+    <iToggle v-model="toggleValue"/>
     <h2>Test</h2>
     <h2>Test</h2>
     <h2>Test</h2>
@@ -51,7 +53,7 @@ export default {
     return {
       appTitle: 'iOS Vue',
       largeTitle: 'Vue.js',
-      toggleValue: false
+      toggleValue: true
     }
   },
   components: {
