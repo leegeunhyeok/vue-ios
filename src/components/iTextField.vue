@@ -37,7 +37,6 @@ $placeholder-color: #8e8e93;
 .i-text-field {
   width: 100%;
   height: 100%;
-  padding: 1rem;
 
   input {
     outline: none;
