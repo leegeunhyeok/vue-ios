@@ -1,6 +1,8 @@
 <template>
   <iView id="app">
-    <iNavigationBar :title="appTitle" :largeTitle="largeTitle"/>
+    <iNavigationBar :title="appTitle" :largeTitle="largeTitle">
+      <iTextField slot="largeArea"/>
+    </iNavigationBar>
     <iToggle :value="toggleValue" @onChange="toggleValue = $event"/>
     <h2>Test</h2>
     <h2>Test</h2>
@@ -39,6 +41,7 @@
 
 <script>
 import iView from '@/components/iView'
+import iTextField from '@/components/iTextField'
 import iNavigationBar from '@/components/iNavigationBar'
 import iToggle from '@/components/iToggle'
 
@@ -53,6 +56,7 @@ export default {
   },
   components: {
     iView,
+    iTextField,
     iNavigationBar,
     iToggle
   },

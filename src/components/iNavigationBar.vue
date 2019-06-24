@@ -25,16 +25,16 @@
       >
         {{ largeTitle }}
       </h2>
-    </div>
-    <div class="i-navigation-bar__large-area">
-      <!-- Content -->
+      <div class="i-navigation-bar__large-area">
+        <slot name="largeArea"/>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'iAppbar',
+  name: 'iNavigationBar',
   props: {
     title: {
       type: String,
@@ -204,20 +204,23 @@ export default {
 
     .i-navigation-bar__large--title {
       position: absolute;
-      text-align: left;
+      width: 100%;
+      background-color: $light-background-color;
       margin: 0;
       padding-left: 1rem;
+      text-align: left;
       font-size: 2rem;
       font-weight: bold;
+      z-index: 9994;
     }
     
     .i-navigation-bar__large-area {
       position: absolute;
-      top: 6rem;
+      top: 5.5rem;
       left: 0;
       width: 100%;
-      height: 2rem;
       background-color: $light-background-color;
+      overflow: hidden;
     }
   }
 }
