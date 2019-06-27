@@ -16,7 +16,7 @@ export default {
   width: 100%;
   height: 100%;
 
-  .i-secction:nth-last-child() {
+  .i-section:nth-last-child() {
     padding-bottom: 2rem;
   }
 }
