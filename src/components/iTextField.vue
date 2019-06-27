@@ -23,15 +23,6 @@ export default {
     type: {
       type: String,
       default: 'text'
-    },
-    placeholder: {
-      type: String
-    },
-    max: {
-      type: Number
-    },
-    min: {
-      type: Number
     }
   }
 }

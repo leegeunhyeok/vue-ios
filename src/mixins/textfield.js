@@ -8,6 +8,18 @@ export default {
      */
     value: {
       default: ''
+    },
+    placeholder: {
+      type: String
+    },
+    max: {
+      type: Number
+    },
+    min: {
+      type: Number
+    },
+    maxlength: {
+      type: Number
     }
   },
   methods: {
