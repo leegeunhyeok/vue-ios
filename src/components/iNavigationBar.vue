@@ -212,6 +212,7 @@ export default {
       top: 5.5rem;
       left: 0;
       width: 100%;
+      padding: 0 1rem;
       background-color: $light-background-color;
       overflow: hidden;
     }
