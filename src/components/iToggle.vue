@@ -5,7 +5,7 @@
       :checked="value"
       @change="change"
     >
-    <span class="i-toggle--slider"></span>
+    <span class="i-toggle__slider"></span>
   </label>
 </template>
 
@@ -38,7 +38,7 @@ $toggle-color-deactive: #eaeaeb;
     width: 0;
     height: 0;
 
-    & + span.i-toggle--slider {
+    & + span.i-toggle__slider {
       cursor: pointer;
       position: absolute;
       top: 0;
@@ -73,11 +73,11 @@ $toggle-color-deactive: #eaeaeb;
 
     &:checked {
 
-      & + span.i-toggle--slider {
+      & + span.i-toggle__slider {
         background-color: $toggle-color-active;
       }
 
-      & + span.i-toggle--slider:before {
+      & + span.i-toggle__slider:before {
         transform: translateX(1.333rem);
       }
     }
