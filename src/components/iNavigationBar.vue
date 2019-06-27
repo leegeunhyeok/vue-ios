@@ -66,7 +66,7 @@ export default {
     },
     largeTitleStyle () {
       return {
-        top: this.navbarHeight / 3 + this.largeTitlePosition + 'px'
+        top: Math.floor(this.navbarHeight / 3 + this.largeTitlePosition) + 'px'
       }
     }
   },
@@ -75,11 +75,10 @@ export default {
     this.watchScrollStatus()
     window.addEventListener('resize', this.getStyleInformation)
     window.addEventListener('scroll', this.watchScrollStatus)
-  },
-  beforeMount () {
-    if (this.extended) {
-      window.scroll(0, this.defaultNavbarHeight)
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual'
     }
+    this.$nextTick(() => window.scroll(0, this.defaultNavbarHeight))
   },
   beforeDestroy () {
     window.addEventListener('resize', this.getStyleInformation)
