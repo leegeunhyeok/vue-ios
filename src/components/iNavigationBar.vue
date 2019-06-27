@@ -6,7 +6,7 @@
       :style="{ borderColor: `rgba(197, 197, 200, ${ extended ? borderOpacity : 1 })` }"
       ref="iNavDefault"
     >
-      <div class="i-navigation-bar--mask"
+      <div class="i-navigation-bar__mask"
         :class="{ blur }"
       />
       <transition name="i-navigation-bar" mode="out-in">
@@ -20,7 +20,7 @@
     <div class="i-navigation-bar__large"
       v-if="extended"
     >
-      <div class="i-navigation-bar__large--title"
+      <div class="i-navigation-bar__large-title"
         :style="largeTitleStyle"
       >
         {{ largeTitle }}
@@ -158,7 +158,7 @@ export default {
       line-height: 3rem;
     }
 
-    .i-navigation-bar--mask {
+    .i-navigation-bar__mask {
       position: absolute;
       top: 0;
       left: 0;
@@ -194,7 +194,7 @@ export default {
     border-bottom: 1px solid;
     border-color: $light-border-color;
 
-    .i-navigation-bar__large--title {
+    .i-navigation-bar__large-title {
       position: absolute;
       width: 100%;
       background-color: $light-background-color;
