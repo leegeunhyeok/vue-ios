@@ -78,7 +78,7 @@ export default {
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual'
     }
-    this.$nextTick(() => window.scroll(0, this.defaultNavbarHeight - 8))
+    this.$nextTick(() => window.scroll(0, this.defaultNavbarHeight))
   },
   beforeDestroy () {
     window.addEventListener('resize', this.getStyleInformation)
@@ -121,9 +121,10 @@ export default {
 @import '../common/style/common.scss';
 
 .i-navigation-bar {
-  display: block;
+  display: inline-block;
   width: 100%;
   height: 8rem;
+  vertical-align: top;
 
   &.not-extended {
     @media only screen and (min-width: 320px) {
