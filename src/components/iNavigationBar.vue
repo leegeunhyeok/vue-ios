@@ -54,7 +54,7 @@ export default {
       pixel: 12,
       navbarHeight: 120,
       defaultNavbarHeight: 40,
-      showTitle: true,
+      showTitle: false,
       defaultNavbarBorder: false,
       borderOpacity: 0,
       largeTitlePosition: 0
@@ -78,7 +78,7 @@ export default {
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual'
     }
-    this.$nextTick(() => window.scroll(0, this.defaultNavbarHeight))
+    this.$nextTick(() => window.scroll(0, this.defaultNavbarHeight - 8))
   },
   beforeDestroy () {
     window.addEventListener('resize', this.getStyleInformation)
@@ -102,7 +102,7 @@ export default {
     watchScrollStatus () {
       const pageYOffset = window.pageYOffset
       this.defaultNavbarBorder = pageYOffset > this.navbarHeight / 3 || !this.extended
-      this.showTitle = pageYOffset + 84 > this.navbarHeight || !this.extended
+      this.showTitle = pageYOffset + 84 > this.navbarHeight + 8 || !this.extended
       
       if (pageYOffset <= this.defaultNavbarHeight) {
         this.largeTitlePosition = pageYOffset
