@@ -6,6 +6,7 @@
     :placeholder="placeholder"
     :max="max"
     :min="min"
+    :maxlength="maxlength"
     :value="value"
     @change="change"
   >
