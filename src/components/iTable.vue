@@ -34,5 +34,9 @@ export default {
     text-align: left;
     color: $light-secondary-text-color;
   }
+
+  .i-table-item:nth-last-child(1) {
+    border-bottom: 1px solid $light-border-color;
+  }
 }
 </style>
