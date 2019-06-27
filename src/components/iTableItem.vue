@@ -14,12 +14,12 @@ export default {
 @import '../common/style/common.scss';
 
 .i-table-item {
-  position: relative;
   display: inline-block;
+  position: relative;
   width: 100%;
+  padding: .5rem 1rem;
   background-color: $light-pure-color;
   border-top: 1px solid $light-border-color;
-  padding: .5rem 1rem;
   vertical-align: top;
 
   .left {
@@ -30,14 +30,14 @@ export default {
     float: right;
   }
 
+  .center {
+    float: none;
+    text-align: center;
+    margin: 0 auto;
+  }
+
   .i-label {
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-       -moz-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-         -o-transform: translateY(-50%);
-            transform: translateY(-50%);
+    line-height: 2.2rem;
   }
 }
 </style>
