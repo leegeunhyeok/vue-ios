@@ -29,16 +29,40 @@ npm install vue-ios
 ```html
 <template>
   <iView id="app">
-    <iNavigationBar :title="appTitle" :largeTitle="largeTitle"/>
-    <iToggle v-model="toggleValue"/>
+    <iNavigationBar :title="appTitle" :largeTitle="largeTitle">
+      <iTextField slot="largeArea" 
+        :width="'100%'"
+        :maxlength="15"
+        v-model="textValue" 
+      />
+    </iNavigationBar>
+    <iTable :title="tableTitle">
+      <iTableItem>
+        <iLabel class="left">Switch {{ switchValue ? 'On' : 'Off' }}</iLabel>
+        <iSwitch class="right" v-model="switchValue"/>
+      </iTableItem>
+      <iTableItem>
+        <iLabel class="left">Vue.js</iLabel>
+      </iTableItem>
+      <iTableItem>
+        <iLabel class="center">Vue.js</iLabel>
+      </iTableItem>
+      <iTableItem>
+        <iLabel class="right">Vue.js</iLabel>
+      </iTableItem>
+    </iTable>
   </iView>
 </template>
 
 <script>
 import {
   iView,
-  iNavigationBar,
-  iToggle
+  iTextField,
+  iNavigationBar
+  iTable,
+  iTableItem,
+  iLabel,
+  iSwitch
 } from 'vue-ios'
 
 export default {
@@ -47,13 +71,19 @@ export default {
     return {
       appTitle: 'iOS Vue',
       largeTitle: 'Vue.js',
-      toggleValue: false
+      textValue: 'Hello, world!',
+      tableTitle: 'iTable',
+      switchValue: true
     }
   },
   components: {
     iView,
+    iTextField,
     iNavigationBar,
-    iToggle
+    iTable,
+    iTableItem,
+    iLabel,
+    iSwitch
   }
 }
 </script>
