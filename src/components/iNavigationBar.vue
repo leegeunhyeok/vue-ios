@@ -77,7 +77,9 @@ export default {
     window.addEventListener('scroll', this.watchScrollStatus)
   },
   beforeMount () {
-    window.scroll(0, this.defaultNavbarHeight)
+    if (this.extended) {
+      window.scroll(0, this.defaultNavbarHeight)
+    }
   },
   beforeDestroy () {
     window.addEventListener('resize', this.getStyleInformation)
