@@ -1,27 +1,68 @@
 <template>
   <iView id="app">
-    <iNavigationBar :title="appTitle"/>
-    <iToggle :value="toggleValue" @onChange="toggleValue = $event"/>
+    <iNavigationBar :title="appTitle" :largeTitle="largeTitle">
+      <iTextField slot="largeArea" 
+        :width="'100%'"
+        :maxlength="15"
+        v-model="textValue" 
+      />
+    </iNavigationBar>
+    <iTable :title="tableTitle">
+      <iTableItem>
+        <iLabel class="left">Switch {{ switchValue ? 'On' : 'Off' }}</iLabel>
+        <iSwitch class="right" v-model="switchValue"/>
+      </iTableItem>
+      <iTableItem>
+        <iLabel class="left">Vue.js</iLabel>
+      </iTableItem>
+      <iTableItem>
+        <iLabel class="center">Vue.js</iLabel>
+      </iTableItem>
+      <iTableItem>
+        <iLabel class="right">Vue.js</iLabel>
+      </iTableItem>
+      <iTableItem>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
+      </iTableItem>
+    </iTable>
   </iView>
 </template>
 
 <script>
 import iView from '@/components/iView'
+import iTextField from '@/components/iTextField'
 import iNavigationBar from '@/components/iNavigationBar'
-import iToggle from '@/components/iToggle'
+import iTable from '@/components/iTable'
+import iTableItem from '@/components/iTableItem'
+import iLabel from '@/components/iLabel'
+import iSwitch from '@/components/iSwitch'
 
 export default {
   name: 'app',
   data () {
     return {
       appTitle: 'iOS Vue',
-      toggleValue: false
+      largeTitle: 'Vue.js',
+      textValue: 'Hello, world!',
+      tableTitle: 'iTable',
+      switchValue: true
     }
   },
   components: {
     iView,
+    iTextField,
     iNavigationBar,
-    iToggle
+    iTable,
+    iTableItem,
+    iLabel,
+    iSwitch
   },
   mounted () {
     const metaContents = [

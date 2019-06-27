@@ -1,10 +1,18 @@
+import iLabel from './components/iLabel.vue'
 import iNavigationBar from './components/iNavigationBar.vue'
-import iToggle from './components/iToggle.vue'
+import iSwitch from './components/iSwitch.vue'
+import iTable from './components/iTable.vue'
+import iTableItem from './components/iTableItem.vue'
+import iTextField from './components/iTextField.vue'
 import iView from './components/iView.vue'
 
 const components = {
+  iLabel,
   iNavigationBar,
-  iToggle,
+  iSwitch,
+  iTable,
+  iTableItem,
+  iTextField,
   iView
 }
 
@@ -32,7 +40,11 @@ if (GlobalVue) {
 }
 
 export {
+  iLabel,
   iNavigationBar,
-  iToggle,
+  iSwitch,
+  iTable,
+  iTableItem,
+  iTextField,
   iView
 }

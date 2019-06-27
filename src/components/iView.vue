@@ -15,6 +15,9 @@ export default {
 .i-view {
   width: 100%;
   height: 100%;
-  padding: 1rem;
+
+  .i-table:nth-last-child(1) {
+    padding-bottom: 2rem;
+  }
 }
 </style>
