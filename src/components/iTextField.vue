@@ -5,12 +5,17 @@
     :placeholder="placeholder"
     :max="max"
     :min="min"
+    :value="value"
+    @change="change"
   >
 </template>
 
 <script>
+import textfield from '@/mixins/textfield'
+
 export default {
   name: 'iTextField',
+  mixins: [ textfield ],
   props: {
     type: {
       type: String,
