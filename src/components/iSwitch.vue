@@ -1,11 +1,11 @@
 <template>
-  <label class="i-toggle">
+  <label class="i-switch">
     <input type="checkbox"
       :value="value"
       :checked="value"
       @change="change"
     >
-    <span class="i-toggle__slider"></span>
+    <span class="i-switch__slider"></span>
   </label>
 </template>
 
@@ -13,7 +13,7 @@
 import toggle from '@/mixins/toggle'
 
 export default {
-  name: 'iToggle',
+  name: 'iSwitch',
   mixins: [ toggle ]
 }
 
@@ -25,7 +25,7 @@ export default {
 $toggle-color-active: #34c759;
 $toggle-color-deactive: #eaeaeb;
 
-.i-toggle {
+.i-switch {
   @include tap-highlight-disable;
   position: relative;
   display: block;
@@ -38,7 +38,7 @@ $toggle-color-deactive: #eaeaeb;
     width: 0;
     height: 0;
 
-    & + span.i-toggle__slider {
+    & + span.i-switch__slider {
       cursor: pointer;
       position: absolute;
       top: 0;
@@ -73,11 +73,11 @@ $toggle-color-deactive: #eaeaeb;
 
     &:checked {
 
-      & + span.i-toggle__slider {
+      & + span.i-switch__slider {
         background-color: $toggle-color-active;
       }
 
-      & + span.i-toggle__slider:before {
+      & + span.i-switch__slider:before {
         transform: translateX(1.333rem);
       }
     }
