@@ -20,11 +20,11 @@
     <div class="i-navigation-bar__large"
       v-if="extended"
     >
-      <h2 class="i-navigation-bar__large--title"
+      <div class="i-navigation-bar__large--title"
         :style="largeTitleStyle"
       >
         {{ largeTitle }}
-      </h2>
+      </div>
       <div class="i-navigation-bar__large-area">
         <slot name="largeArea"/>
       </div>
@@ -122,21 +122,9 @@ export default {
 @import '../common/style/common.scss';
 
 .i-navigation-bar {
-  display: inline-block;
+  display: block;
   width: 100%;
-  margin-bottom: 10px;
-
-  @media only screen and (min-width: 320px) {
-    height: 8.5rem;
-  }
-
-  @media only screen and (min-width: 768px) {
-    height: 9rem;
-  }
-
-  @media only screen and (min-width: 1224px) {
-    height: 9.5rem;
-  }
+  height: 8rem;
 
   &.not-extended {
     @media only screen and (min-width: 320px) {
