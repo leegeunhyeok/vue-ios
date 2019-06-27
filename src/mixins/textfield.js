@@ -23,7 +23,7 @@ export default {
     }
   },
   methods: {
-    change ($event) {
+    input ($event) {
       this.$emit('input', $event.target.value)
     }
   }

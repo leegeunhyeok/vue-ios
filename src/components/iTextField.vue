@@ -8,7 +8,7 @@
     :min="min"
     :maxlength="maxlength"
     :value="value"
-    @change="change"
+    @input="input"
   >
 </template>
 
