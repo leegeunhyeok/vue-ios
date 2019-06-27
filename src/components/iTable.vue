@@ -24,11 +24,12 @@ export default {
 
 .i-table {
   width: 100%;
-  padding: 0 1rem;
   padding-top: 2rem;
   background-color: $light-background-color;
 
   .i-table__title {
+    padding: 0 1rem;
+    margin-bottom: .4rem;
     font-size: .86rem;
     text-align: left;
     color: $light-secondary-text-color;
