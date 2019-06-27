@@ -1,6 +1,7 @@
 <template>
   <input
     class="i-text-field"
+    :style="propsStyle"
     :type="type"
     :placeholder="placeholder"
     :max="max"
@@ -11,11 +12,12 @@
 </template>
 
 <script>
+import boxModel from '@/mixins/box-model'
 import textfield from '@/mixins/textfield'
 
 export default {
   name: 'iTextField',
-  mixins: [ textfield ],
+  mixins: [ boxModel, textfield ],
   props: {
     type: {
       type: String,
@@ -44,10 +46,11 @@ $placeholder-color: #8e8e93;
   background-color: #e3e3e8;
   border: none;
   border-radius: 6px;
+  font-size: 1rem;
   -webkit-transition: $transition-speed;
-      -moz-transition: $transition-speed;
+     -moz-transition: $transition-speed;
       -ms-transition: $transition-speed;
-        -o-transition: $transition-speed;
+       -o-transition: $transition-speed;
           transition: $transition-speed;
 
   &::placeholder {
