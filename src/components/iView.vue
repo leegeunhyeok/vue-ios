@@ -15,6 +15,9 @@ export default {
 .i-view {
   width: 100%;
   height: 100%;
-  padding: 1rem;
+
+  .i-secction:nth-child(1) {
+    padding-top: 2rem;
+  }
 }
 </style>
