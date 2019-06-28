@@ -1,5 +1,5 @@
 <template>
-  <button class="i-button">
+  <button class="i-button" @click="click">
     <slot/>
   </button>
 </template>
