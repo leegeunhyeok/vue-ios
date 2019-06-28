@@ -24,11 +24,6 @@ export default {
   background-color: transparent;
   font-size: 1rem;
   padding: .5rem 1rem;
-  -webkit-transition: $transition-speed;
-     -moz-transition: $transition-speed;
-      -ms-transition: $transition-speed;
-       -o-transition: $transition-speed;
-          transition: $transition-speed;
 
   &:hover {
     color: $ios-lightblue-color;
