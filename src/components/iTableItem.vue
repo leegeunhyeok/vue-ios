@@ -24,10 +24,18 @@ export default {
 
   .left {
     float: left;
+
+    &.i-button {
+      padding-left: 0;
+    }
   }
 
   .right {
     float: right;
+
+    &.i-button {
+      padding-right: 0;
+    }
   }
 
   .center {
