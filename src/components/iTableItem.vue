@@ -19,6 +19,7 @@ export default {
   width: 100%;
   padding: .5rem 1rem;
   vertical-align: top;
+  background-color: $light-pure-color;
 
   &:before {
     content: "";
