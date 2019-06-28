@@ -1,3 +1,4 @@
+import iButton from './components/iButton.vue'
 import iLabel from './components/iLabel.vue'
 import iNavigationBar from './components/iNavigationBar.vue'
 import iSwitch from './components/iSwitch.vue'
@@ -7,6 +8,7 @@ import iTextField from './components/iTextField.vue'
 import iView from './components/iView.vue'
 
 const components = {
+  iButton,
   iLabel,
   iNavigationBar,
   iSwitch,
@@ -40,6 +42,7 @@ if (GlobalVue) {
 }
 
 export {
+  iButton,
   iLabel,
   iNavigationBar,
   iSwitch,

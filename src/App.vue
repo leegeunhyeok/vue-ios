@@ -1,16 +1,22 @@
 <template>
   <iView id="app">
     <iNavigationBar :title="appTitle" :largeTitle="largeTitle">
+      <iButton slot="titleLeft">L</iButton>
       <iTextField slot="largeArea" 
         :width="'100%'"
         :maxlength="15"
         v-model="textValue" 
       />
+      <iButton slot="titleRight">R</iButton>
     </iNavigationBar>
     <iTable :title="tableTitle">
       <iTableItem>
         <iLabel class="left">Switch {{ switchValue ? 'On' : 'Off' }}</iLabel>
         <iSwitch class="right" v-model="switchValue"/>
+      </iTableItem>
+      <iTableItem>
+        <iButton class="left" @click="count++">Click me</iButton>
+        <iLabel class="right">{{ count }}</iLabel>
       </iTableItem>
       <iTableItem>
         <iLabel class="left">Vue.js</iLabel>
@@ -22,6 +28,10 @@
         <iLabel class="right">Vue.js</iLabel>
       </iTableItem>
       <iTableItem>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
         <h2>{{ textValue || 'No text' }}</h2>
         <h2>{{ textValue || 'No text' }}</h2>
         <h2>{{ textValue || 'No text' }}</h2>
@@ -43,6 +53,7 @@ import iTable from '@/components/iTable'
 import iTableItem from '@/components/iTableItem'
 import iLabel from '@/components/iLabel'
 import iSwitch from '@/components/iSwitch'
+import iButton from '@/components/iButton'
 
 export default {
   name: 'app',
@@ -52,7 +63,8 @@ export default {
       largeTitle: 'Vue.js',
       textValue: 'Hello, world!',
       tableTitle: 'iTable',
-      switchValue: true
+      switchValue: true,
+      count: 0
     }
   },
   components: {
@@ -62,7 +74,8 @@ export default {
     iTable,
     iTableItem,
     iLabel,
-    iSwitch
+    iSwitch,
+    iButton
   },
   mounted () {
     const metaContents = [

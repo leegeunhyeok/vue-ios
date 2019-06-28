@@ -18,16 +18,33 @@ export default {
   position: relative;
   width: 100%;
   padding: .5rem 1rem;
-  background-color: $light-pure-color;
-  border-top: 1px solid $light-border-color;
   vertical-align: top;
+  background-color: $light-pure-color;
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: calc(100% - 1rem);
+    height: 1px;
+    background-color: $light-border-color;
+  }
 
   .left {
     float: left;
+
+    &.i-button {
+      padding-left: 0;
+    }
   }
 
   .right {
     float: right;
+
+    &.i-button {
+      padding-right: 0;
+    }
   }
 
   .center {

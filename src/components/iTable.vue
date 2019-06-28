@@ -35,8 +35,21 @@ export default {
     color: $light-secondary-text-color;
   }
 
-  .i-table-item:nth-last-child(1) {
+  .i-table-item {
+    border-top: 1px solid $light-border-color;
+  }
+
+  & > .i-table-item ~ .i-table-item {
+    border: none;
+  }
+
+  .i-table-item:last-child {
     border-bottom: 1px solid $light-border-color;
+
+    &::before {
+      width: 0;
+      height: 0;
+    }
   }
 }
 </style>

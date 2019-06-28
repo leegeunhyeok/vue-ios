@@ -10,10 +10,18 @@
         :class="{ blur }"
       />
       <transition name="i-navigation-bar" mode="out-in">
-        <div class="i-navigation-bar--title"
+        <div class="i-navigation-bar--title-area"
           v-if="showTitle"
         >
-          {{ title }}
+          <div class="i-navigation-bar--left-area">
+            <slot name="titleLeft"/>
+          </div>
+          <div class="i-navigation-bar--title">
+            {{ title }}
+          </div>
+          <div class="i-navigation-bar--right-area">
+            <slot name="titleRight"/>
+          </div>
         </div>
       </transition>
     </div>
@@ -173,15 +181,28 @@ export default {
       }
     }
 
-    .i-navigation-bar--title {
+    .i-navigation-bar--title-area {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      color: #000;
-      font-size: .9rem;
-      font-weight: bold;
+      text-align: center;
+      
+      .i-navigation-bar--title {
+        display: inline-block;
+        color: #000;
+        font-size: .9rem;
+        font-weight: bold;
+      }
+
+      .i-navigation-bar--left-area {
+        float: left;
+      }
+
+      .i-navigation-bar--right-area {
+        float: right;
+      }
     }
   }
 
