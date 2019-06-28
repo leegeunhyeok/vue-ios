@@ -26,20 +26,30 @@
 npm install vue-ios
 ```
 
+- Preview
+
+<img src="https://user-images.githubusercontent.com/26512984/60333033-0d316180-99d3-11e9-9f2b-50cb5effe524.gif">
+
 ```html
 <template>
   <iView id="app">
     <iNavigationBar :title="appTitle" :largeTitle="largeTitle">
+      <iButton slot="titleLeft">L</iButton>
       <iTextField slot="largeArea" 
         :width="'100%'"
         :maxlength="15"
         v-model="textValue" 
       />
+      <iButton slot="titleRight">R</iButton>
     </iNavigationBar>
     <iTable :title="tableTitle">
       <iTableItem>
         <iLabel class="left">Switch {{ switchValue ? 'On' : 'Off' }}</iLabel>
         <iSwitch class="right" v-model="switchValue"/>
+      </iTableItem>
+      <iTableItem>
+        <iButton class="left" @click="count++">Click me</iButton>
+        <iLabel class="right">{{ count }}</iLabel>
       </iTableItem>
       <iTableItem>
         <iLabel class="left">Vue.js</iLabel>
@@ -49,6 +59,20 @@ npm install vue-ios
       </iTableItem>
       <iTableItem>
         <iLabel class="right">Vue.js</iLabel>
+      </iTableItem>
+      <iTableItem>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
+        <h2>{{ textValue || 'No text' }}</h2>
       </iTableItem>
     </iTable>
   </iView>
@@ -62,7 +86,8 @@ import {
   iTable,
   iTableItem,
   iLabel,
-  iSwitch
+  iSwitch,
+  iButton
 } from 'vue-ios'
 
 export default {
@@ -73,7 +98,8 @@ export default {
       largeTitle: 'Vue.js',
       textValue: 'Hello, world!',
       tableTitle: 'iTable',
-      switchValue: true
+      switchValue: true,
+      count: 0
     }
   },
   components: {
@@ -83,7 +109,8 @@ export default {
     iTable,
     iTableItem,
     iLabel,
-    iSwitch
+    iSwitch,
+    iButton
   }
 }
 </script>
