@@ -75,17 +75,8 @@ export default {
       }
 
       .i-alert--dialog--footer {
-        padding: .5rem 0;
-
-        &::before {
-          content: "";
-          position: absolute;
-          bottom: 3rem;
-          left: 0;
-          width: 100%;
-          height: 1px;
-          background-color: $light-border-color;
-        }
+        padding: .4rem 0;
+        border: 1px solid $light-border-color;
       }
     }
   }
