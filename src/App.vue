@@ -42,6 +42,13 @@
         <h2>{{ textValue || 'No text' }}</h2>
       </iTableItem>
     </iTable>
+    <iAlert :title="'iAlert'">
+      <div slot="body">Hello, world!</div>
+      <div slot="footer">
+        <iButton>Cancel</iButton>
+        <iButton>Ok</iButton>
+      </div>
+    </iAlert>
   </iView>
 </template>
 
@@ -54,6 +61,7 @@ import iTableItem from '@/components/iTableItem'
 import iLabel from '@/components/iLabel'
 import iSwitch from '@/components/iSwitch'
 import iButton from '@/components/iButton'
+import iAlert from '@/components/iAlert'
 
 export default {
   name: 'app',
@@ -75,7 +83,8 @@ export default {
     iTableItem,
     iLabel,
     iSwitch,
-    iButton
+    iButton,
+    iAlert
   },
   mounted () {
     const metaContents = [
@@ -101,7 +110,6 @@ html, body {
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
