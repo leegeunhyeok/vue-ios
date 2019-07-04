@@ -30,6 +30,11 @@
   "devDependencies": {
     "@vue/cli": "^3.8.4",
     "@vue/cli-service-global": "^3.8.4",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
     "node-sass": "^4.12.0",
     "rollup": "^1.15.6",
     "rollup-plugin-alias": "^1.5.2",
