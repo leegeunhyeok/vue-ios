@@ -27,7 +27,7 @@ export default {
   padding-top: 2rem;
   background-color: $light-background-color;
 
-  .i-table__title {
+  &__title {
     padding: 0 1rem;
     margin-bottom: .4rem;
     font-size: .86rem;

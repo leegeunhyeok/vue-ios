@@ -6,34 +6,33 @@
       :style="{ borderColor: `rgba(197, 197, 200, ${ extended ? borderOpacity : 1 })` }"
       ref="iNavDefault"
     >
-      <div class="i-navigation-bar__mask"
-        :class="{ blur }"
-      />
-      <transition name="i-navigation-bar" mode="out-in">
-        <div class="i-navigation-bar--title-area"
-          v-if="showTitle"
-        >
-          <div class="i-navigation-bar--left-area">
-            <slot name="titleLeft"/>
+      <div class="i-navigation-bar__mask">
+        <transition name="i-navigation-bar" mode="out-in">
+          <div class="i-navigation-bar__title-area"
+            v-if="showTitle"
+          >
+            <div class="i-navigation-bar__left-area">
+              <slot name="titleLeft"/>
+            </div>
+            <div class="i-navigation-bar__title">
+              {{ title }}
+            </div>
+            <div class="i-navigation-bar__right-area">
+              <slot name="titleRight"/>
+            </div>
           </div>
-          <div class="i-navigation-bar--title">
-            {{ title }}
-          </div>
-          <div class="i-navigation-bar--right-area">
-            <slot name="titleRight"/>
-          </div>
-        </div>
-      </transition>
+        </transition>
+      </div>
     </div>
     <div class="i-navigation-bar__large"
       v-if="extended"
     >
-      <div class="i-navigation-bar__large-title"
+      <div class="i-navigation-bar__large__title"
         :style="largeTitleStyle"
       >
         {{ largeTitle }}
       </div>
-      <div class="i-navigation-bar__large-area">
+      <div class="i-navigation-bar__large__area">
         <slot name="largeArea"/>
       </div>
     </div>
@@ -51,10 +50,6 @@ export default {
     largeTitle: {
       type: String,
       default: ''
-    },
-    blur: {
-      type: Boolean,
-      default: true
     }
   },
   data () {
@@ -148,7 +143,7 @@ export default {
     }
   }
 
-  .i-navigation-bar__default {
+  &__default {
     position: fixed;
     top: 0;
     left: 0;
@@ -166,47 +161,42 @@ export default {
       height: 3rem;
       line-height: 3rem;
     }
-
-    .i-navigation-bar__mask {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: $light-background-color;
-
-      &.blur {
-        // TODO: blur effect implement
-        opacity: 1;
-      }
-    }
-
-    .i-navigation-bar--title-area {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      
-      .i-navigation-bar--title {
-        display: inline-block;
-        color: #000;
-        font-size: .9rem;
-        font-weight: bold;
-      }
-
-      .i-navigation-bar--left-area {
-        float: left;
-      }
-
-      .i-navigation-bar--right-area {
-        float: right;
-      }
-    }
   }
 
-  .i-navigation-bar__large {
+  &__mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $light-background-color;
+  }
+
+  &__title-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+
+  &__title {
+    display: inline-block;
+    color: #000;
+    font-size: .9rem;
+    font-weight: bold;
+  }
+
+  &__left-area {
+    float: left;
+  }
+
+  &__right-area {
+    float: right;
+  }
+
+  &__large {
     position: absolute;
     top: 0;
     left: 0;
@@ -216,7 +206,7 @@ export default {
     border-bottom: 1px solid;
     border-color: $light-border-color;
 
-    .i-navigation-bar__large-title {
+    &__title {
       position: absolute;
       width: 100%;
       background-color: $light-background-color;
@@ -228,7 +218,7 @@ export default {
       z-index: 9994;
     }
     
-    .i-navigation-bar__large-area {
+    &__area {
       position: absolute;
       top: 5.5rem;
       left: 0;
