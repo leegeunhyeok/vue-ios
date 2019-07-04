@@ -119,16 +119,6 @@ export default {
           flex: 1 1 0;
           border-right: 1px solid $light-border-color;
 
-          &::before {
-            content: "";
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 1px;
-            height: 100%;
-            background-color: $light-border-color;
-          }
-
           &:nth-last-child(1) {
             border: none;
           }
