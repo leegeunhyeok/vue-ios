@@ -1,17 +1,32 @@
 <template>
-  <div class="i-alert">
-    <div class="i-alert--mask">
-      <div class="i-alert--dialog">
-        <div class="i-alert--dialog--header">{{ title }}</div>
-        <div class="i-alert--dialog--body" v-if="!!$slots.body">
-          <slot name="body"/>
-        </div>
-        <div class="i-alert--dialog--footer" v-if="!!$slots.footer">
-          <slot name="footer"/>
-        </div>
+  <transition name="fade"
+    mode="out-in"
+    @after-enter="showDialog = true"
+  >
+    <div class="i-alert">
+      <div class="i-alert--mask">
+        <transition name="dialog"
+          @after-leave="$emit('close')"
+        >
+          <div class="i-alert--dialog"
+            @click.stop
+            v-if="showDialog"
+          >
+            <div class="i-alert--dialog--header">{{ title }}</div>
+            <div class="i-alert--dialog--body" v-if="!!$slots.body">
+              <slot name="body"/>
+            </div>
+            <div class="i-alert--dialog--footer"
+              :class="{ horizontal: isHorizontal }"
+              v-if="!!$slots.footer"
+            >
+              <slot name="footer"/>
+            </div>
+          </div>
+        </transition>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -19,7 +34,12 @@ import dialog from '@/mixins/dialog'
 
 export default {
   name: 'iAlert',
-  mixins: [ dialog ]
+  mixins: [ dialog ],
+  data () {
+    return {
+      showDialog: false
+    }
+  }
 }
 </script>
 
@@ -76,7 +96,16 @@ export default {
 
       .i-alert--dialog--footer {
         padding: .4rem 0;
-        border: 1px solid $light-border-color;
+        border-top: 1px solid $light-border-color;
+        width: 100%;
+
+        &.horizontal {
+          // horizontal
+        }
+
+        &.vertical {
+          // vertical
+        }
       }
     }
   }
