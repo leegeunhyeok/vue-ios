@@ -11,6 +11,9 @@ export default {
     },
     backgroundColor: {
       type: String
+    },
+    bold: {
+      type: Boolean
     }
   },
   methods: {

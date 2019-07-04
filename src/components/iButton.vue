@@ -1,5 +1,8 @@
 <template>
-  <button class="i-button" @click="click">
+  <button class="i-button"
+    :class="{ bold }"
+    @click="click"
+  >
     <slot/>
   </button>
 </template>
@@ -24,6 +27,10 @@ export default {
   background-color: transparent;
   font-size: 1rem;
   padding: .5rem 1rem;
+
+  &.bold {
+    font-weight: bold;
+  }
 
   &:hover {
     color: $ios-lightblue-color;
