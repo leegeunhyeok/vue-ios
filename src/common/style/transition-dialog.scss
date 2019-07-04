@@ -1,0 +1,13 @@
+@import './common.scss';
+
+.dialog-enter, .dialog-leave-to {
+  -webkit-transform: scale(.9);
+     -moz-transform: scale(.9);
+      -ms-transform: scale(.9);
+       -o-transform: scale(.9);
+          transform: scale(.9);
+}
+
+.dialog-enter-active, .dialog-leave-active {
+  transition: $transition-speed ease-out;
+}
