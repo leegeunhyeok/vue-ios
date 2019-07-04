@@ -1,0 +1,17 @@
+@import './common.scss';
+
+.dialog-enter-active, .dialog-leave-active {
+  transition: all .3s;
+}
+
+.dialog-enter {
+  -webkit-transform: translate(-50%, -50%) scale(.9) !important;
+     -moz-transform: translate(-50%, -50%) scale(.9) !important;
+      -ms-transform: translate(-50%, -50%) scale(.9) !important;
+       -o-transform: translate(-50%, -50%) scale(.9) !important;
+          transform: translate(-50%, -50%) scale(.9) !important;
+}
+
+.dialog-leave-to {
+  opacity: 0;
+}

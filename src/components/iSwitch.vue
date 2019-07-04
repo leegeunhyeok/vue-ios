@@ -38,39 +38,6 @@ $toggle-color-deactive: #eaeaeb;
     width: 0;
     height: 0;
 
-    & + span.i-switch__slider {
-      cursor: pointer;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-radius: 1.083rem;
-      background-color: $toggle-color-deactive;
-      -webkit-transition: $transition-speed;
-         -moz-transition: $transition-speed;
-          -ms-transition: $transition-speed;
-           -o-transition: $transition-speed;
-              transition: $transition-speed;
-
-      &:before {
-        content: "";
-        position: absolute;
-        height: 1.833rem;
-        width: 1.833rem;
-        left: 0.163rem;
-        bottom: 0.166rem;
-        border-radius: 50%;
-        box-shadow: 0px 1px 2px rgba(0, 0, 0, .2);
-        background-color: #fff;
-        -webkit-transition: $transition-speed;
-           -moz-transition: $transition-speed;
-            -ms-transition: $transition-speed;
-             -o-transition: $transition-speed;
-                transition: $transition-speed;
-      }
-    }
-
     &:checked {
 
       & + span.i-switch__slider {
@@ -80,6 +47,39 @@ $toggle-color-deactive: #eaeaeb;
       & + span.i-switch__slider:before {
         transform: translateX(1.333rem);
       }
+    }
+  }
+
+  &__slider {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 1.083rem;
+    background-color: $toggle-color-deactive;
+    -webkit-transition: $transition-speed;
+       -moz-transition: $transition-speed;
+        -ms-transition: $transition-speed;
+         -o-transition: $transition-speed;
+            transition: $transition-speed;
+
+    &:before {
+      content: "";
+      position: absolute;
+      height: 1.833rem;
+      width: 1.833rem;
+      left: 0.163rem;
+      bottom: 0.166rem;
+      border-radius: 50%;
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, .2);
+      background-color: #fff;
+      -webkit-transition: $transition-speed;
+         -moz-transition: $transition-speed;
+          -ms-transition: $transition-speed;
+           -o-transition: $transition-speed;
+              transition: $transition-speed;
     }
   }
 }

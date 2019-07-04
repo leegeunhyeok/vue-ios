@@ -2,10 +2,10 @@
   <iView id="app">
     <iNavigationBar :title="appTitle" :largeTitle="largeTitle">
       <iButton slot="titleLeft">L</iButton>
-      <iTextField slot="largeArea" 
+      <iTextField slot="largeArea"
         :width="'100%'"
         :maxlength="15"
-        v-model="textValue" 
+        v-model="textValue"
       />
       <iButton slot="titleRight">R</iButton>
     </iNavigationBar>
@@ -42,18 +42,29 @@
         <h2>{{ textValue || 'No text' }}</h2>
       </iTableItem>
     </iTable>
+    <iAlert title="iAlert"
+      @close="switchValue = false"
+      v-show="switchValue"
+    >
+      <div slot="body">Hello, world!</div>
+      <div slot="footer">
+        <iButton :bold="true" @click="switchValue = false">Cancel</iButton>
+        <iButton @click="switchValue = false">Ok</iButton>
+      </div>
+    </iAlert>
   </iView>
 </template>
 
 <script>
-import iView from '@/components/iView'
-import iTextField from '@/components/iTextField'
+import iAlert from '@/components/iAlert'
+import iButton from '@/components/iButton'
+import iLabel from '@/components/iLabel'
 import iNavigationBar from '@/components/iNavigationBar'
+import iSwitch from '@/components/iSwitch'
 import iTable from '@/components/iTable'
 import iTableItem from '@/components/iTableItem'
-import iLabel from '@/components/iLabel'
-import iSwitch from '@/components/iSwitch'
-import iButton from '@/components/iButton'
+import iTextField from '@/components/iTextField'
+import iView from '@/components/iView'
 
 export default {
   name: 'app',
@@ -63,19 +74,20 @@ export default {
       largeTitle: 'Vue.js',
       textValue: 'Hello, world!',
       tableTitle: 'iTable',
-      switchValue: true,
+      switchValue: false,
       count: 0
     }
   },
   components: {
-    iView,
-    iTextField,
+    iAlert,
+    iButton,
+    iLabel,
     iNavigationBar,
+    iSwitch,
     iTable,
     iTableItem,
-    iLabel,
-    iSwitch,
-    iButton
+    iTextField,
+    iView
   },
   mounted () {
     const metaContents = [
@@ -93,6 +105,7 @@ export default {
 </script>
 
 <style lang="scss">
+
 html, body {
   width: 100%;
   height: 100%;
@@ -101,10 +114,10 @@ html, body {
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
+
 </style>
