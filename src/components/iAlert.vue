@@ -18,7 +18,10 @@
               <slot name="body"/>
             </div>
             <div class="i-alert--dialog--footer"
-              :class="{ horizontal: isHorizontal }"
+              :class="{
+                horizontal: isHorizontal,
+                vertical: !isHorizontal
+              }"
               v-if="!!$slots.footer"
             >
               <slot name="footer"/>
@@ -104,16 +107,45 @@ export default {
       }
 
       .i-alert--dialog--footer {
-        padding: .4rem 0;
         border-top: 1px solid $light-border-color;
         width: 100%;
 
-        &.horizontal {
-          // horizontal
+        &.horizontal > * {
+          display: flex;
+
+          .i-button {
+            padding: .8rem 0;
+            flex: 1 1 0;
+            border-right: 1px solid $light-border-color;
+
+            &::before {
+              content: "";
+              position: absolute;
+              right: 0;
+              top: 0;
+              width: 1px;
+              height: 100%;
+              background-color: $light-border-color;
+            }
+
+            &:nth-last-child(1) {
+              border: none;
+            }
+          }
         }
 
-        &.vertical {
-          // vertical
+        &.vertical > * {
+          padding: .4rem 0;
+
+          .i-button {
+            display: block;
+            width: 100%;
+            border-bottom: 1px solid $light-border-color;
+
+            &:nth-last-child(1) {
+              border: none;
+            }
+          }
         }
       }
     }
