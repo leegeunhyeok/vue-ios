@@ -3,8 +3,8 @@
     <iNavigationBar :title="appTitle" :largeTitle="largeTitle">
       <iButton slot="titleLeft">L</iButton>
       <iTextField slot="largeArea" 
-        :width="'100%'"
-        :maxlength="15"
+        width="100%"
+        maxlength="15"
         v-model="textValue" 
       />
       <iButton slot="titleRight">R</iButton>
@@ -42,11 +42,14 @@
         <h2>{{ textValue || 'No text' }}</h2>
       </iTableItem>
     </iTable>
-    <iAlert :title="'iAlert'" v-if="switchValue">
+    <iAlert title="iAlert"
+      @close="switchValue = false"
+      v-show="switchValue"
+    >
       <div slot="body">Hello, world!</div>
       <div slot="footer">
-        <iButton>Cancel</iButton>
-        <iButton>Ok</iButton>
+        <iButton bold="true" @click="switchValue = false">Cancel</iButton>
+        <iButton @click="switchValue = false">Ok</iButton>
       </div>
     </iAlert>
   </iView>
@@ -76,15 +79,15 @@ export default {
     }
   },
   components: {
-    iView,
-    iTextField,
+    iAlert,
+    iButton,
+    iLabel,
     iNavigationBar,
+    iSwitch,
     iTable,
     iTableItem,
-    iLabel,
-    iSwitch,
-    iButton,
-    iAlert
+    iTextField,
+    iView
   },
   mounted () {
     const metaContents = [
@@ -102,8 +105,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import './common/style/transition-dialog.scss';
-@import './common/style/transition-fade.scss';
 
 html, body {
   width: 100%;
@@ -118,4 +119,5 @@ html, body {
   text-align: center;
   color: #2c3e50;
 }
+
 </style>
