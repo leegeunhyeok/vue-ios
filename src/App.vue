@@ -42,7 +42,7 @@
         <h2>{{ textValue || 'No text' }}</h2>
       </iTableItem>
     </iTable>
-    <iAlert :title="'iAlert'">
+    <iAlert :title="'iAlert'" v-if="switchValue">
       <div slot="body">Hello, world!</div>
       <div slot="footer">
         <iButton>Cancel</iButton>
@@ -71,7 +71,7 @@ export default {
       largeTitle: 'Vue.js',
       textValue: 'Hello, world!',
       tableTitle: 'iTable',
-      switchValue: true,
+      switchValue: false,
       count: 0
     }
   },
@@ -102,6 +102,9 @@ export default {
 </script>
 
 <style lang="scss">
+@import './common/style/transition-dialog.scss';
+@import './common/style/transition-fade.scss';
+
 html, body {
   width: 100%;
   height: 100%;
