@@ -2,10 +2,10 @@
   <iView id="app">
     <iNavigationBar :title="appTitle" :largeTitle="largeTitle">
       <iButton slot="titleLeft">L</iButton>
-      <iTextField slot="largeArea" 
-        width="100%"
-        maxlength="15"
-        v-model="textValue" 
+      <iTextField slot="largeArea"
+        :width="'100%'"
+        :maxlength="15"
+        v-model="textValue"
       />
       <iButton slot="titleRight">R</iButton>
     </iNavigationBar>
@@ -48,7 +48,7 @@
     >
       <div slot="body">Hello, world!</div>
       <div slot="footer">
-        <iButton bold="true" @click="switchValue = false">Cancel</iButton>
+        <iButton :bold="true" @click="switchValue = false">Cancel</iButton>
         <iButton @click="switchValue = false">Ok</iButton>
       </div>
     </iAlert>
