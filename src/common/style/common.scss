@@ -10,6 +10,8 @@ $dark-background-color: #1c1c1e;
 $dark-border-color: #3d3d40;
 $transition-speed: .3s;
 
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -17,7 +19,6 @@ $transition-speed: .3s;
 body {
   font-family: "Helvetica Neue"
   , "Apple SD Gothic Neo"
-  , "Malgun Gothic"
   , "Nanum Gothic"
   , Helvetica
   , Arial
