@@ -2,10 +2,10 @@
   <iView id="app">
     <iNavigationBar :title="appTitle" :largeTitle="largeTitle">
       <iButton slot="titleLeft">L</iButton>
-      <iTextField slot="largeArea" 
-        width="100%"
-        maxlength="15"
-        v-model="textValue" 
+      <iTextField slot="largeArea"
+        :width="'100%'"
+        :maxlength="15"
+        v-model="textValue"
       />
       <iButton slot="titleRight">R</iButton>
     </iNavigationBar>
@@ -48,7 +48,7 @@
     >
       <div slot="body">Hello, world!</div>
       <div slot="footer">
-        <iButton bold="true" @click="switchValue = false">Cancel</iButton>
+        <iButton :bold="true" @click="switchValue = false">Cancel</iButton>
         <iButton @click="switchValue = false">Ok</iButton>
       </div>
     </iAlert>
@@ -56,15 +56,15 @@
 </template>
 
 <script>
-import iView from '@/components/iView'
-import iTextField from '@/components/iTextField'
+import iAlert from '@/components/iAlert'
+import iButton from '@/components/iButton'
+import iLabel from '@/components/iLabel'
 import iNavigationBar from '@/components/iNavigationBar'
+import iSwitch from '@/components/iSwitch'
 import iTable from '@/components/iTable'
 import iTableItem from '@/components/iTableItem'
-import iLabel from '@/components/iLabel'
-import iSwitch from '@/components/iSwitch'
-import iButton from '@/components/iButton'
-import iAlert from '@/components/iAlert'
+import iTextField from '@/components/iTextField'
+import iView from '@/components/iView'
 
 export default {
   name: 'app',

@@ -96,7 +96,7 @@ export default {
     @media only screen and (min-width: 1224px) {
       width: 20%;
     }
-    
+
     &__header {
       font-weight: bold;
       font-size: 1.2rem;
@@ -118,16 +118,6 @@ export default {
           padding: .8rem 0;
           flex: 1 1 0;
           border-right: 1px solid $light-border-color;
-
-          &::before {
-            content: "";
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 1px;
-            height: 100%;
-            background-color: $light-border-color;
-          }
 
           &:nth-last-child(1) {
             border: none;
