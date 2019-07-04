@@ -22,23 +22,23 @@
 
 ## Usage
 
-```
+```bash
 npm install vue-ios
 ```
 
 - Preview
 
-<img src="https://user-images.githubusercontent.com/26512984/60333033-0d316180-99d3-11e9-9f2b-50cb5effe524.gif">
+<img src="https://user-images.githubusercontent.com/26512984/60678481-965b0380-9ebf-11e9-9092-4832cbad9a55.gif">
 
 ```html
 <template>
   <iView id="app">
     <iNavigationBar :title="appTitle" :largeTitle="largeTitle">
       <iButton slot="titleLeft">L</iButton>
-      <iTextField slot="largeArea" 
+      <iTextField slot="largeArea"
         :width="'100%'"
         :maxlength="15"
-        v-model="textValue" 
+        v-model="textValue"
       />
       <iButton slot="titleRight">R</iButton>
     </iNavigationBar>
@@ -75,19 +75,30 @@ npm install vue-ios
         <h2>{{ textValue || 'No text' }}</h2>
       </iTableItem>
     </iTable>
+    <iAlert title="iAlert"
+      @close="switchValue = false"
+      v-show="switchValue"
+    >
+      <div slot="body">Hello, world!</div>
+      <div slot="footer">
+        <iButton :bold="true" @click="switchValue = false">Cancel</iButton>
+        <iButton @click="switchValue = false">Ok</iButton>
+      </div>
+    </iAlert>
   </iView>
 </template>
 
 <script>
 import {
-  iView,
-  iTextField,
-  iNavigationBar
+  iAlert,
+  iButton,
+  iLabel,
+  iNavigationBar,
+  iSwitch,
   iTable,
   iTableItem,
-  iLabel,
-  iSwitch,
-  iButton
+  iTextField,
+  iView
 } from 'vue-ios'
 
 export default {
@@ -98,22 +109,39 @@ export default {
       largeTitle: 'Vue.js',
       textValue: 'Hello, world!',
       tableTitle: 'iTable',
-      switchValue: true,
+      switchValue: false,
       count: 0
     }
   },
   components: {
-    iView,
-    iTextField,
+    iAlert,
+    iButton,
+    iLabel,
     iNavigationBar,
+    iSwitch,
     iTable,
     iTableItem,
-    iLabel,
-    iSwitch,
-    iButton
+    iTextField,
+    iView
   }
 }
 </script>
+
+<style>
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+</style>
 ```
 
 ## Project setup
