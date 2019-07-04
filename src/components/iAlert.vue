@@ -1,12 +1,13 @@
 <template>
   <transition name="fade"
-    mode="out-in"
-    @after-enter="showDialog = true"
+    @before-enter="showDialog = true"
   >
     <div class="i-alert">
-      <div class="i-alert--mask">
+      <div class="i-alert--mask"
+        @click="close"
+      >
         <transition name="dialog"
-          @after-leave="$emit('close')"
+          @after-leave="close"
         >
           <div class="i-alert--dialog"
             @click.stop
@@ -39,11 +40,19 @@ export default {
     return {
       showDialog: false
     }
+  },
+  methods: {
+    close () {
+      this.showDialog = false
+      this.$emit('close')
+    }
   }
 }
 </script>
 
 <style lang="scss">
+@import '../common/style/transition-dialog.scss';
+@import '../common/style/transition-fade.scss';
 @import '../common/style/common.scss';
 
 .i-alert {
