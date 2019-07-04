@@ -96,7 +96,7 @@ export default {
     @media only screen and (min-width: 1224px) {
       width: 20%;
     }
-    
+
     &__header {
       font-weight: bold;
       font-size: 1.2rem;

@@ -106,12 +106,12 @@ export default {
       const pageYOffset = window.pageYOffset
       this.defaultNavbarBorder = pageYOffset > this.navbarHeight / 3 || !this.extended
       this.showTitle = pageYOffset + 84 > this.navbarHeight + 8 || !this.extended
-      
+
       if (pageYOffset <= this.defaultNavbarHeight) {
         this.largeTitlePosition = pageYOffset
       } else {
-        this.largeTitlePosition = this.defaultNavbarHeight < 0 ?
-          0 : this.defaultNavbarHeight
+        this.largeTitlePosition = this.defaultNavbarHeight < 0
+          ? 0 : this.defaultNavbarHeight
       }
       this.borderOpacity = -(1 - 1 / this.defaultNavbarHeight * pageYOffset) - 0.1
     }
@@ -217,7 +217,7 @@ export default {
       font-weight: bold;
       z-index: 9994;
     }
-    
+
     &__area {
       position: absolute;
       top: 5.5rem;
