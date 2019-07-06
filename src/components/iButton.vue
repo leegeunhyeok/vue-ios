@@ -18,8 +18,10 @@ export default {
 
 <style lang="scss">
 @import '../common/style/common.scss';
+@import '../common/style/mixin.scss';
 
 .i-button {
+  @include tap-highlight-disable;
   cursor: pointer;
   outline: none;
   border: none;

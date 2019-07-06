@@ -14,7 +14,8 @@ export default {
 @import '../common/style/common.scss';
 
 .i-table-item {
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
   position: relative;
   width: 100%;
   padding: .5rem 1rem;
@@ -32,7 +33,7 @@ export default {
   }
 
   .left {
-    float: left;
+    margin-right: auto;
 
     &.i-button {
       padding-left: 0;
@@ -40,7 +41,7 @@ export default {
   }
 
   .right {
-    float: right;
+    margin-left: auto;
 
     &.i-button {
       padding-right: 0;

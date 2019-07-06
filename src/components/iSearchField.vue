@@ -1,6 +1,6 @@
 <template>
   <input
-    class="i-text-field"
+    class="i-text-search-field"
     :style="propsStyle"
     :type="type"
     :placeholder="placeholder"
@@ -17,7 +17,7 @@ import boxModel from '@/mixins/box-model'
 import textfield from '@/mixins/textfield'
 
 export default {
-  name: 'iTextField',
+  name: 'iSearchField',
   mixins: [ boxModel, textfield ],
   props: {
     type: {
@@ -30,15 +30,20 @@ export default {
 
 <style lang="scss">
 @import '../common/style/common.scss';
-$placeholder-color: #8a8a8d;
+$placeholder-color: #8e8e93;
 
-.i-text-field {
+.i-text-search-field {
   outline: none;
   padding: .4rem .8rem;
-  background-color: $light-pure-color;
+  background-color: #e3e3e8;
   border: none;
   border-radius: 6px;
   font-size: 1rem;
+  -webkit-transition: $transition-speed;
+     -moz-transition: $transition-speed;
+      -ms-transition: $transition-speed;
+       -o-transition: $transition-speed;
+          transition: $transition-speed;
 
   &::placeholder {
     color: $placeholder-color;
@@ -50,6 +55,10 @@ $placeholder-color: #8a8a8d;
 
   &::-ms-input-placeholder {
     color: $placeholder-color;
+  }
+
+  &:hover {
+    background-color: #dedee4;
   }
 }
 </style>
