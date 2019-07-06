@@ -30,20 +30,15 @@ export default {
 
 <style lang="scss">
 @import '../common/style/common.scss';
-$placeholder-color: #8e8e93;
+$placeholder-color: #8a8a8d;
 
 .i-text-field {
   outline: none;
   padding: .4rem .8rem;
-  background-color: #e3e3e8;
+  background-color: $light-pure-color;
   border: none;
   border-radius: 6px;
   font-size: 1rem;
-  -webkit-transition: $transition-speed;
-     -moz-transition: $transition-speed;
-      -ms-transition: $transition-speed;
-       -o-transition: $transition-speed;
-          transition: $transition-speed;
 
   &::placeholder {
     color: $placeholder-color;
@@ -55,10 +50,6 @@ $placeholder-color: #8e8e93;
 
   &::-ms-input-placeholder {
     color: $placeholder-color;
-  }
-
-  &:hover {
-    background-color: #dedee4;
   }
 }
 </style>
