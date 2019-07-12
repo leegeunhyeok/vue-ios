@@ -2,7 +2,7 @@
   <iView id="app">
     <iNavigationBar :title="appTitle" :largeTitle="largeTitle">
       <iButton slot="titleLeft">L</iButton>
-      <iTextField slot="largeArea"
+      <iSearchField slot="largeArea"
         :width="'100%'"
         :maxlength="15"
         v-model="textValue"
@@ -19,6 +19,9 @@
         <iLabel class="right">{{ count }}</iLabel>
       </iTableItem>
       <iTableItem>
+        <iLabel class="left">{{ textValue || 'No text' }}</iLabel>
+      </iTableItem>
+      <iTableItem>
         <iLabel class="left">Vue.js</iLabel>
       </iTableItem>
       <iTableItem>
@@ -28,18 +31,38 @@
         <iLabel class="right">Vue.js</iLabel>
       </iTableItem>
       <iTableItem>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
+        <iLabel class="left">Vue.js</iLabel>
+        <iLabel class="right">Vue.js</iLabel>
+      </iTableItem>
+      <iTableItem>
+        <iLabel class="left">Vue.js</iLabel>
+        <iLabel class="center">Vue.js</iLabel>
+        <iLabel class="right">Vue.js</iLabel>
+      </iTableItem>
+    </iTable>
+    <iTable :title="'Register'">
+      <iTableItem>
+        <iTextField
+          :width="'100%'"
+          :maxlength="15"
+          :placeholder="'Name'"
+          v-model="idValue"
+        />
+      </iTableItem>
+      <iTableItem>
+        <iTextField
+          :width="'100%'"
+          :maxlength="15"
+          :type="'password'"
+          :placeholder="'Password'"
+          v-model="passwordValue"
+        />
+      </iTableItem>
+      <iTableItem>
+        <h2>ID:{{ idValue }}</h2>
+      </iTableItem>
+      <iTableItem>
+        <h2>Password: {{ passwordValue }}</h2>
       </iTableItem>
     </iTable>
     <iAlert title="iAlert"
@@ -64,6 +87,7 @@ import iSwitch from '@/components/iSwitch'
 import iTable from '@/components/iTable'
 import iTableItem from '@/components/iTableItem'
 import iTextField from '@/components/iTextField'
+import iSearchField from '@/components/iSearchField'
 import iView from '@/components/iView'
 
 export default {
@@ -71,10 +95,12 @@ export default {
   data () {
     return {
       appTitle: 'iOS Vue',
-      largeTitle: 'Vue.js',
+      largeTitle: 'iOS Vue',
       textValue: 'Hello, world!',
       tableTitle: 'iTable',
       switchValue: false,
+      idValue: '',
+      passwordValue: '',
       count: 0
     }
   },
@@ -87,6 +113,7 @@ export default {
     iTable,
     iTableItem,
     iTextField,
+    iSearchField,
     iView
   },
   mounted () {

@@ -6,6 +6,9 @@
   <a href="https://www.npmjs.com/package/vue-ios">
     <img alt="npm" src="https://img.shields.io/npm/v/vue-ios.svg">
   </a>
+  <a>
+    <img alt="npm" src="https://img.shields.io/npm/dm/vue-ios.svg">
+  </a>
   <a href="https://www.npmjs.com/package/vue-ios">
     <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/vue-ios.svg">
   </a>
@@ -35,7 +38,7 @@ npm install vue-ios
   <iView id="app">
     <iNavigationBar :title="appTitle" :largeTitle="largeTitle">
       <iButton slot="titleLeft">L</iButton>
-      <iTextField slot="largeArea"
+      <iSearchField slot="largeArea"
         :width="'100%'"
         :maxlength="15"
         v-model="textValue"
@@ -52,6 +55,9 @@ npm install vue-ios
         <iLabel class="right">{{ count }}</iLabel>
       </iTableItem>
       <iTableItem>
+        <iLabel class="left">{{ textValue || 'No text' }}</iLabel>
+      </iTableItem>
+      <iTableItem>
         <iLabel class="left">Vue.js</iLabel>
       </iTableItem>
       <iTableItem>
@@ -61,18 +67,38 @@ npm install vue-ios
         <iLabel class="right">Vue.js</iLabel>
       </iTableItem>
       <iTableItem>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
-        <h2>{{ textValue || 'No text' }}</h2>
+        <iLabel class="left">Vue.js</iLabel>
+        <iLabel class="right">Vue.js</iLabel>
+      </iTableItem>
+      <iTableItem>
+        <iLabel class="left">Vue.js</iLabel>
+        <iLabel class="center">Vue.js</iLabel>
+        <iLabel class="right">Vue.js</iLabel>
+      </iTableItem>
+    </iTable>
+    <iTable :title="'Register'">
+      <iTableItem>
+        <iTextField
+          :width="'100%'"
+          :maxlength="15"
+          :placeholder="'Name'"
+          v-model="idValue"
+        />
+      </iTableItem>
+      <iTableItem>
+        <iTextField
+          :width="'100%'"
+          :maxlength="15"
+          :type="'password'"
+          :placeholder="'Password'"
+          v-model="passwordValue"
+        />
+      </iTableItem>
+      <iTableItem>
+        <h2>ID:{{ idValue }}</h2>
+      </iTableItem>
+      <iTableItem>
+        <h2>Password: {{ passwordValue }}</h2>
       </iTableItem>
     </iTable>
     <iAlert title="iAlert"
@@ -98,6 +124,7 @@ import {
   iTable,
   iTableItem,
   iTextField,
+  iSearchField,
   iView
 } from 'vue-ios'
 
@@ -106,10 +133,12 @@ export default {
   data () {
     return {
       appTitle: 'iOS Vue',
-      largeTitle: 'Vue.js',
+      largeTitle: 'iOS Vue',
       textValue: 'Hello, world!',
       tableTitle: 'iTable',
       switchValue: false,
+      idValue: '',
+      passwordValue: '',
       count: 0
     }
   },
@@ -118,16 +147,30 @@ export default {
     iButton,
     iLabel,
     iNavigationBar,
+    iSearchField,
     iSwitch,
     iTable,
     iTableItem,
     iTextField,
     iView
+  },
+  mounted () {
+    const metaContents = [
+      'initial-scale=1.0',
+      'width=device-width',
+      'user-scalable=no',
+      'maximum-scale=1'
+    ]
+    const meta = document.createElement('meta')
+    meta.name = 'viewport'
+    meta.content = metaContents.join(',')
+    document.head.appendChild(meta)
   }
 }
 </script>
 
 <style>
+
 html, body {
   width: 100%;
   height: 100%;
@@ -141,6 +184,7 @@ html, body {
   text-align: center;
   color: #2c3e50;
 }
+
 </style>
 ```
 
