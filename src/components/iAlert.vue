@@ -79,6 +79,7 @@ export default {
     padding-top: 1.2rem;
     border-radius: 1rem;
     background-color: $light-background-color;
+    text-align: center;
     -webkit-transform: translate(-50%, -50%);
         -moz-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
