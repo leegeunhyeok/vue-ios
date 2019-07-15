@@ -1,5 +1,5 @@
 <template>
-  <iView>
+  <iView :type="'main'">
     <iTable :title="tableTitle">
       <iTableItem>
         <iLabel class="left">Switch {{ switchValue ? 'On' : 'Off' }}</iLabel>
