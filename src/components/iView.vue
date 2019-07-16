@@ -31,10 +31,12 @@ export default {
 
   @media only screen and (min-width: 320px) {
     & {
+      right: -100%;
       width: 100%;
     }
 
     &.main {
+      right: 0;
       width: 100%;
     }
   }
