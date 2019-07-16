@@ -1,27 +1,12 @@
 <template>
   <iApp>
-    <iNavigationBar :title="appTitle" :largeTitle="largeTitle">
-      <iButton slot="titleLeft">L</iButton>
-      <iSearchField slot="largeArea"
-        :width="'100%'"
-        :maxlength="15"
-        v-model="textValue"
-      />
-      <iButton slot="titleRight">R</iButton>
-    </iNavigationBar>
-    <iNavigator>
-      <Main v-if="isMain"/>
-      <Sub v-else/>
-    </iNavigator>
+    <Main v-if="isMain"/>
+    <Sub v-if="view === 'sub'"/>
   </iApp>
 </template>
 
 <script>
 import iApp from '@/components/iApp'
-import iNavigator from '@/components/iNavigator'
-import iNavigationBar from '@/components/iNavigationBar'
-import iButton from '@/components/iButton'
-import iSearchField from '@/components/iSearchField'
 
 import Main from './Main.vue'
 import Sub from './Sub.vue'
@@ -30,19 +15,13 @@ export default {
   name: 'app',
   components: {
     iApp,
-    iNavigator,
-    iNavigationBar,
-    iButton,
-    iSearchField,
     Main,
     Sub
   },
   data () {
     return {
-      appTitle: 'iOS Vue',
-      largeTitle: 'iOS Vue',
-      textValue: 'test',
-      isMain: true
+      isMain: true,
+      view: 'sub'
     }
   },
   mounted () {

@@ -1,5 +1,6 @@
 <template>
   <iView>
+    <iNavigationBar :title="'Sub'"/>
     <iTable :title="'Sub'">
       <iTableItem>
         <iLabel class="left">Switch {{ switchValue ? 'On' : 'Off' }}</iLabel>
@@ -15,6 +16,7 @@ import iSwitch from '@/components/iSwitch'
 import iTable from '@/components/iTable'
 import iTableItem from '@/components/iTableItem'
 import iView from '@/components/iView'
+import iNavigationBar from '@/components/iNavigationBar'
 
 export default {
   name: 'app',
@@ -28,7 +30,8 @@ export default {
     iSwitch,
     iTable,
     iTableItem,
-    iView
+    iView,
+    iNavigationBar
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
-  <transition name="navigate">
+  <transition-group name="navigate">
     <slot/>
-  </transition>
+  </transition-group>
 </template>
 
 <script>
