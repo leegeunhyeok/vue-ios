@@ -20,6 +20,10 @@ export default {
     },
     maxlength: {
       type: Number
+    },
+    spellcheck: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {

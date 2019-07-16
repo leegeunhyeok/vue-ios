@@ -1,6 +1,7 @@
 <template>
   <input
     class="i-text-search-field"
+    :spellcheck="spellcheck"
     :style="propsStyle"
     :type="type"
     :placeholder="placeholder"
