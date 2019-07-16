@@ -25,30 +25,24 @@ export default {
 
 <style lang="scss">
 .i-view {
-  width: 100%;
   height: 100%;
 
   @media only screen and (min-width: 320px) {
+    & {
+      width: 100%;
+    }
+
     &.main {
       width: 100%;
     }
   }
 
-  @media only screen and (min-width: 700px) {
-    &.main {
-      float: left;
-      width: 40%;
+  @media only screen and (min-width: 700px), screen and (min-width: 768px) {
+    & {
+      float: right;
+      width: 70%;
     }
-  }
 
-  @media only screen and (min-width: 768px) {
-    &.main {
-      float: left;
-      width: 36%;
-    }
-  }
-
-  @media only screen and (min-width: 1224px) {
     &.main {
       float: left;
       width: 30%;
