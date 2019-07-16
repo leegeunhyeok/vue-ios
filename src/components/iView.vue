@@ -25,7 +25,9 @@ export default {
 
 <style lang="scss">
 .i-view {
+  position: absolute;
   height: 100%;
+  overflow-y: auto;
 
   @media only screen and (min-width: 320px) {
     & {
@@ -39,12 +41,12 @@ export default {
 
   @media only screen and (min-width: 700px), screen and (min-width: 768px) {
     & {
-      float: right;
+      right: 0;
       width: 70%;
     }
 
     &.main {
-      float: left;
+      left: 0;
       width: 30%;
     }
   }
