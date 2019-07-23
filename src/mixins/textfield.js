@@ -13,13 +13,13 @@ export default {
       type: String
     },
     max: {
-      type: Number
+      type: Number | String
     },
     min: {
-      type: Number
+      type: Number | String
     },
     maxlength: {
-      type: Number
+      type: Number | String
     },
     spellcheck: {
       type: Boolean,

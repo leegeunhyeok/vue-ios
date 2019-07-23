@@ -44,7 +44,7 @@ export default {
   name: 'iNavigationBar',
   props: {
     static: {
-      type: Boolean,
+      type: Boolean | String,
       default: false
     },
     title: {

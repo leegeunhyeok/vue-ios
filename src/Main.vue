@@ -1,5 +1,5 @@
 <template>
-  <iView :type="'main'">
+  <iView>
     <iTable :title="tableTitle">
       <iTableItem>
         <iLabel class="left">Switch {{ switchValue ? 'On' : 'Off' }}</iLabel>
@@ -34,18 +34,18 @@
     <iTable :title="'Register'">
       <iTableItem>
         <iTextField
-          :width="'100%'"
-          :maxlength="15"
-          :placeholder="'Name'"
+          width="100%"
+          maxlength="15"
+          placeholder="Name"
           v-model="idValue"
         />
       </iTableItem>
       <iTableItem>
         <iTextField
-          :width="'100%'"
-          :maxlength="15"
-          :type="'password'"
-          :placeholder="'Password'"
+          width="100%"
+          maxlength="15"
+          type="password"
+          placeholder="Password"
           v-model="passwordValue"
         />
       </iTableItem>
