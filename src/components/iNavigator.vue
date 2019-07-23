@@ -36,12 +36,12 @@ export default {
   @media only screen and (min-width: 700px), screen and (min-width: 768px) {
     .i-view__main {
       float: left;
-      width: 30%;
+      width: 35%;
     }
 
     .i-view__sub {
       float: right;
-      width: 70%;
+      width: 65%;
       transform: none;
     }
   }
