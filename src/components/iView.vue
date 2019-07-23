@@ -6,12 +6,7 @@
 
 <script>
 export default {
-  name: 'iView',
-  props: {
-    type: {
-      type: String
-    }
-  }
+  name: 'iView'
 }
 
 </script>
