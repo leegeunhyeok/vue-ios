@@ -55,6 +55,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../common/style/common.scss';
+
 html, body, .i-app {
   width: 100%;
   height: 100%;
@@ -77,6 +79,7 @@ html, body, .i-app {
     }
 
     @media only screen and (min-width: 700px), screen and (min-width: 768px) {
+      border-right: 1px solid $light-border-color;
       width: 35%;
       float: left;
     }
