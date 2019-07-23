@@ -1,14 +1,5 @@
 <template>
   <iView>
-    <iNavigationBar :title="'Sub'" :largeTitle="'Sub'">
-      <iButton slot="titleLeft">L</iButton>
-      <iSearchField slot="largeArea"
-        :width="'100%'"
-        :maxlength="15"
-        v-model="textValue"
-      />
-      <iButton slot="titleRight">R</iButton>
-    </iNavigationBar>
     <iTable :title="'Sub'">
       <iTableItem>
         <iLabel class="left">Switch {{ switchValue ? 'On' : 'Off' }}</iLabel>
@@ -25,6 +16,7 @@ import iTable from '@/components/iTable'
 import iTableItem from '@/components/iTableItem'
 import iView from '@/components/iView'
 import iNavigationBar from '@/components/iNavigationBar'
+import iSearchField from '@/components/iSearchField'
 
 export default {
   name: 'app',
@@ -39,7 +31,8 @@ export default {
     iTable,
     iTableItem,
     iView,
-    iNavigationBar
+    iNavigationBar,
+    iSearchField
   }
 }
 </script>

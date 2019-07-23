@@ -1,14 +1,5 @@
 <template>
   <iView :type="'main'">
-    <iNavigationBar :title="appTitle" :largeTitle="largeTitle">
-      <iButton slot="titleLeft">L</iButton>
-      <iSearchField slot="largeArea"
-        :width="'100%'"
-        :maxlength="15"
-        v-model="textValue"
-      />
-      <iButton slot="titleRight">R</iButton>
-    </iNavigationBar>
     <iTable :title="tableTitle">
       <iTableItem>
         <iLabel class="left">Switch {{ switchValue ? 'On' : 'Off' }}</iLabel>

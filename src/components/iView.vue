@@ -1,5 +1,5 @@
 <template>
-  <div class="i-view" :class="viewType">
+  <div class="i-view">
     <slot/>
   </div>
 </template>
@@ -11,13 +11,6 @@ export default {
     type: {
       type: String
     }
-  },
-  computed: {
-    viewType () {
-      return {
-        main: this.type === 'main'
-      }
-    }
   }
 }
 
@@ -25,33 +18,9 @@ export default {
 
 <style lang="scss">
 .i-view {
-  position: absolute;
+  width: 100%;
   height: 100%;
   overflow-y: auto;
-
-  @media only screen and (min-width: 320px) {
-    & {
-      right: -100%;
-      width: 100%;
-    }
-
-    &.main {
-      right: 0;
-      width: 100%;
-    }
-  }
-
-  @media only screen and (min-width: 700px), screen and (min-width: 768px) {
-    & {
-      right: 0;
-      width: 70%;
-    }
-
-    &.main {
-      left: 0;
-      width: 30%;
-    }
-  }
 
   .i-table:nth-last-child(1) {
     padding-bottom: 2rem;

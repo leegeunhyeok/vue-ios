@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss">
-html, body {
+html, body, .i-app {
   width: 100%;
   height: 100%;
   margin: 0;
