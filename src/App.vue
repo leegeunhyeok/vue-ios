@@ -1,6 +1,10 @@
 <template>
   <iApp>
-    <iNavigationBar :title="appTitle" :largeTitle="largeTitle">
+    <iNavigationBar
+      :title="appTitle"
+      :largeTitle="largeTitle"
+      slot="header"
+    >
       <iButton slot="titleLeft">L</iButton>
       <iSearchField slot="largeArea"
         :width="'100%'"
@@ -9,10 +13,8 @@
       />
       <iButton slot="titleRight">R</iButton>
     </iNavigationBar>
-    <iNavigator>
-      <Main v-if="isMain" slot="main"/>
-      <Sub v-if="true" slot="sub"/>
-    </iNavigator>
+    <Main v-if="isMain" slot="main"/>
+    <Sub v-if="true" slot="sub"/>
   </iApp>
 </template>
 
