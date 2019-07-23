@@ -124,6 +124,7 @@ export default {
 @import '../common/style/common.scss';
 
 .i-navigation-bar {
+  position: relative;
   display: inline-block;
   width: 100%;
   height: 8rem;
