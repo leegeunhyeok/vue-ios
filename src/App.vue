@@ -13,7 +13,7 @@
       />
       <iButton slot="titleRight">R</iButton>
     </iNavigationBar>
-    <Main slot="main" @onAlert="showAlert = true" v-if="isMain"/>
+    <Main slot="main" @onAlert="onAlert" v-if="isMain"/>
     <Sub slot="sub" v-if="true"/>
     <iAlert slot="alert"
       title="iAlert"
@@ -71,6 +71,11 @@ export default {
     meta.name = 'viewport'
     meta.content = metaContents.join(',')
     document.head.appendChild(meta)
+  },
+  methods: {
+    onAlert ($event) {
+      this.showAlert = $event
+    }
   }
 }
 </script>

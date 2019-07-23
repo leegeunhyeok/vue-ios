@@ -93,9 +93,7 @@ export default {
   },
   watch: {
     switchValue (newVal) {
-      if (newVal) {
-        this.$emit('onAlert')
-      }
+      this.$emit('onAlert', newVal)
     }
   }
 }
