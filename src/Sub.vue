@@ -15,8 +15,6 @@ import iSwitch from '@/components/iSwitch'
 import iTable from '@/components/iTable'
 import iTableItem from '@/components/iTableItem'
 import iView from '@/components/iView'
-import iNavigationBar from '@/components/iNavigationBar'
-import iSearchField from '@/components/iSearchField'
 
 export default {
   name: 'app',
@@ -30,9 +28,7 @@ export default {
     iSwitch,
     iTable,
     iTableItem,
-    iView,
-    iNavigationBar,
-    iSearchField
+    iView
   }
 }
 </script>

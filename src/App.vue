@@ -1,5 +1,14 @@
 <template>
   <iApp>
+    <iAlert title="iAlert"
+      @close="showAlert = false"
+    >
+      <div slot="body">{{ textValue }}</div>
+      <div slot="footer">
+        <iButton :bold="true" @click="showAlert = false">Cancel</iButton>
+        <iButton @click="showAlert = false">Ok</iButton>
+      </div>
+    </iAlert>
     <iNavigationBar
       :title="appTitle"
       :largeTitle="largeTitle"
@@ -13,8 +22,8 @@
       />
       <iButton slot="titleRight">R</iButton>
     </iNavigationBar>
-    <Main v-if="isMain" slot="main"/>
-    <Sub v-if="true" slot="sub"/>
+    <Main slot="main" @onAlert="showAlert = true" v-if="isMain"/>
+    <Sub slot="sub" v-if="true"/>
   </iApp>
 </template>
 
@@ -22,15 +31,8 @@
 import iApp from '@/components/iApp'
 import iAlert from '@/components/iAlert'
 import iButton from '@/components/iButton'
-import iLabel from '@/components/iLabel'
 import iNavigationBar from '@/components/iNavigationBar'
-import iNavigator from '@/components/iNavigator'
-import iSwitch from '@/components/iSwitch'
-import iTable from '@/components/iTable'
-import iTableItem from '@/components/iTableItem'
-import iTextField from '@/components/iTextField'
 import iSearchField from '@/components/iSearchField'
-import iView from '@/components/iView'
 
 import Main from './Main.vue'
 import Sub from './Sub.vue'
@@ -41,15 +43,8 @@ export default {
     iApp,
     iAlert,
     iButton,
-    iLabel,
     iNavigationBar,
-    iNavigator,
-    iSwitch,
-    iTable,
-    iTableItem,
-    iTextField,
     iSearchField,
-    iView,
     Main,
     Sub
   },
@@ -59,12 +54,8 @@ export default {
       largeTitle: 'iOS Vue',
       textValue: 'Hello, world!',
       tableTitle: 'iTable',
-      switchValue: false,
-      idValue: '',
-      passwordValue: '',
-      count: 0,
       isMain: true,
-      view: 'main'
+      showAlert: false
     }
   },
   mounted () {

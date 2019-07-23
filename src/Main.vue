@@ -56,29 +56,16 @@
         <h2>Password: {{ passwordValue }}</h2>
       </iTableItem>
     </iTable>
-    <iAlert title="iAlert"
-      @close="switchValue = false"
-      v-show="switchValue"
-    >
-      <div slot="body">Hello, world!</div>
-      <div slot="footer">
-        <iButton :bold="true" @click="switchValue = false">Cancel</iButton>
-        <iButton @click="switchValue = false">Ok</iButton>
-      </div>
-    </iAlert>
   </iView>
 </template>
 
 <script>
-import iAlert from '@/components/iAlert'
 import iButton from '@/components/iButton'
 import iLabel from '@/components/iLabel'
-import iNavigationBar from '@/components/iNavigationBar'
 import iSwitch from '@/components/iSwitch'
 import iTable from '@/components/iTable'
 import iTableItem from '@/components/iTableItem'
 import iTextField from '@/components/iTextField'
-import iSearchField from '@/components/iSearchField'
 import iView from '@/components/iView'
 
 export default {
@@ -96,16 +83,20 @@ export default {
     }
   },
   components: {
-    iAlert,
     iButton,
     iLabel,
-    iNavigationBar,
     iSwitch,
     iTable,
     iTableItem,
     iTextField,
-    iSearchField,
     iView
+  },
+  watch: {
+    switchValue (newVal) {
+      if (newVal) {
+        this.$emit('onAlert')
+      }
+    }
   }
 }
 </script>
