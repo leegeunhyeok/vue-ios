@@ -9,7 +9,7 @@
       <div class="i-navigation-bar__mask">
         <transition name="i-navigation-bar" mode="out-in">
           <div class="i-navigation-bar__title-area"
-            v-if="showTitle"
+            v-if="showDefaultNavbar"
           >
             <div class="i-navigation-bar__left-area">
               <slot name="titleLeft"/>
@@ -43,6 +43,10 @@
 export default {
   name: 'iNavigationBar',
   props: {
+    static: {
+      type: Boolean,
+      default: false
+    },
     title: {
       type: String,
       default: ''
@@ -69,6 +73,9 @@ export default {
     extended () {
       return !!this.largeTitle
     },
+    showDefaultNavbar () {
+      return this.showTitle || this.static
+    },
     defaultNavbarStyle () {
       return {
         borderColor: `rgba(197, 197, 200, ${this.extended ? this.borderOpacity : 1})`,
@@ -82,7 +89,7 @@ export default {
     }
   },
   mounted () {
-    if (this.$parent.$refs.main) {
+    if (this.$parent.$refs.main && !this.static) {
       this.event = true
       this.getStyleInformation()
       this.watchScrollStatus()

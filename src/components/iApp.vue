@@ -11,6 +11,7 @@
     <div class="i-sub-area">
       <iNavigationBar
         :title="subNavigationTitle"
+        :static="true"
         v-if="showSubTitle"
       />
       <div class="i-sub-view">
@@ -27,7 +28,7 @@ export default {
   name: 'iApp',
   data () {
     return {
-      subNavigationTitle: '',
+      subNavigationTitle: 'Sub view',
       showSubTitle: false
     }
   },
