@@ -3,7 +3,7 @@
     :class="{ 'not-extended': !extended }"
   >
     <div class="i-navigation-bar__default"
-      :style="{ borderColor: `rgba(197, 197, 200, ${ extended ? borderOpacity : 1 })` }"
+      :style="defaultNavbarStyle"
       ref="iNavDefault"
     >
       <div class="i-navigation-bar__mask">
@@ -60,12 +60,20 @@ export default {
       showTitle: false,
       defaultNavbarBorder: false,
       borderOpacity: 0,
-      largeTitlePosition: 0
+      scrollYPos: 0,
+      largeTitlePosition: 0,
+      event: false
     }
   },
   computed: {
     extended () {
       return !!this.largeTitle
+    },
+    defaultNavbarStyle () {
+      return {
+        borderColor: `rgba(197, 197, 200, ${ this.extended ? this.borderOpacity : 1 })`,
+        top: `${ this.scrollYPos }px`
+      }
     },
     largeTitleStyle () {
       return {
@@ -74,18 +82,23 @@ export default {
     }
   },
   mounted () {
-    this.getStyleInformation()
-    this.watchScrollStatus()
-    window.addEventListener('resize', this.getStyleInformation)
-    window.addEventListener('scroll', this.watchScrollStatus)
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual'
+    if (this.$parent.$refs.main) {
+      this.event = true
+      this.getStyleInformation()
+      this.watchScrollStatus()
+      this.$parent.$refs.main.addEventListener('resize', this.getStyleInformation)
+      this.$parent.$refs.main.addEventListener('scroll', this.watchScrollStatus)
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual'
+      }
+      this.$nextTick(() => this.$parent.$refs.main.scroll(0, this.defaultNavbarHeight))
     }
-    this.$nextTick(() => window.scroll(0, this.defaultNavbarHeight))
   },
   beforeDestroy () {
-    window.addEventListener('resize', this.getStyleInformation)
-    window.removeEventListener('scroll', this.watchScrollStatus)
+    if (this.event) {
+      this.$parent.$refs.main.addEventListener('resize', this.getStyleInformation)
+      this.$parent.$refs.main.removeEventListener('scroll', this.watchScrollStatus)
+    }
   },
   methods: {
     getStyleInformation () {
@@ -103,17 +116,18 @@ export default {
       )
     },
     watchScrollStatus () {
-      const pageYOffset = window.pageYOffset
-      this.defaultNavbarBorder = pageYOffset > this.navbarHeight / 3 || !this.extended
-      this.showTitle = pageYOffset + 84 > this.navbarHeight + 8 || !this.extended
+      const scrollYPos = this.$parent.$refs.main.scrollTop
+      this.scrollYPos = scrollYPos
+      this.defaultNavbarBorder = scrollYPos > this.navbarHeight / 3 || !this.extended
+      this.showTitle = scrollYPos + 86 > this.navbarHeight + 8 || !this.extended
 
-      if (pageYOffset <= this.defaultNavbarHeight) {
-        this.largeTitlePosition = pageYOffset
+      if (scrollYPos <= this.defaultNavbarHeight) {
+        this.largeTitlePosition = scrollYPos
       } else {
         this.largeTitlePosition = this.defaultNavbarHeight < 0
           ? 0 : this.defaultNavbarHeight
       }
-      this.borderOpacity = -(1 - 1 / this.defaultNavbarHeight * pageYOffset) - 0.1
+      this.borderOpacity = -(1 - 1 / this.defaultNavbarHeight * scrollYPos) - 0.1
     }
   }
 }
@@ -124,8 +138,6 @@ export default {
 @import '../common/style/common.scss';
 
 .i-navigation-bar {
-  position: relative;
-  display: inline-block;
   width: 100%;
   height: 8rem;
   vertical-align: top;
