@@ -1,4 +1,4 @@
-import './prototypes'
+import './global'
 
 import iAlert from './components/iAlert.vue'
 import iButton from './components/iButton.vue'
