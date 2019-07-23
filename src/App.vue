@@ -1,14 +1,5 @@
 <template>
   <iApp>
-    <iAlert title="iAlert"
-      @close="showAlert = false"
-    >
-      <div slot="body">{{ textValue }}</div>
-      <div slot="footer">
-        <iButton :bold="true" @click="showAlert = false">Cancel</iButton>
-        <iButton @click="showAlert = false">Ok</iButton>
-      </div>
-    </iAlert>
     <iNavigationBar
       :title="appTitle"
       :largeTitle="largeTitle"
@@ -16,14 +7,25 @@
     >
       <iButton slot="titleLeft">L</iButton>
       <iSearchField slot="largeArea"
-        :width="'100%'"
-        :maxlength="15"
+        width="100%"
+        maxlength="15"
         v-model="textValue"
       />
       <iButton slot="titleRight">R</iButton>
     </iNavigationBar>
     <Main slot="main" @onAlert="showAlert = true" v-if="isMain"/>
     <Sub slot="sub" v-if="true"/>
+    <iAlert slot="alert"
+      title="iAlert"
+      @close="showAlert = false"
+      v-show="showAlert"
+    >
+      <div slot="body">{{ textValue }}</div>
+      <div slot="footer">
+        <iButton bold="true" @click="showAlert = false">Cancel</iButton>
+        <iButton @click="showAlert = false">Ok</iButton>
+      </div>
+    </iAlert>
   </iApp>
 </template>
 

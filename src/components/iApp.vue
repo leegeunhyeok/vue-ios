@@ -9,14 +9,16 @@
       </div>
     </div>
     <div class="i-sub-area">
-      <iNavigationBar
+      <iNavigationBar static="true"
         :title="subNavigationTitle"
-        :static="true"
         v-if="showSubTitle"
       />
       <div class="i-sub-view">
         <slot name="sub"/>
       </div>
+    </div>
+    <div class="i-alert-area">
+      <slot name="alert"/>
     </div>
   </div>
 </template>
