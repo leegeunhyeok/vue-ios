@@ -71,8 +71,8 @@ export default {
     },
     defaultNavbarStyle () {
       return {
-        borderColor: `rgba(197, 197, 200, ${ this.extended ? this.borderOpacity : 1 })`,
-        top: `${ this.scrollYPos }px`
+        borderColor: `rgba(197, 197, 200, ${this.extended ? this.borderOpacity : 1})`,
+        top: `${this.scrollYPos}px`
       }
     },
     largeTitleStyle () {
