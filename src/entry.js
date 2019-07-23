@@ -1,3 +1,5 @@
+import './prototypes'
+
 import iAlert from './components/iAlert.vue'
 import iButton from './components/iButton.vue'
 import iLabel from './components/iLabel.vue'
