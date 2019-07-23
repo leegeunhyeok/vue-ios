@@ -9,7 +9,7 @@
     "./sfc": "src/vue-ios.vue"
   },
   "scripts": {
-    "dev": "vue serve --open src/App.vue",
+    "dev": "vue serve --open src/main.js",
     "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
     "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/vue-ios.umd.js",
     "build:es": "rollup --config build/rollup.config.js --format es --file dist/vue-ios.esm.js",
