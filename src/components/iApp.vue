@@ -82,7 +82,7 @@ html, body, .i-app {
 
     @media only screen and (min-width: 700px), screen and (min-width: 768px) {
       border-right: 1px solid $light-border-color;
-      width: 35%;
+      width: 37%;
       float: left;
     }
   }
@@ -93,7 +93,7 @@ html, body, .i-app {
     }
 
     @media only screen and (min-width: 700px), screen and (min-width: 768px) {
-      width: 65%;
+      width: 63%;
       float: right;
     }
   }
