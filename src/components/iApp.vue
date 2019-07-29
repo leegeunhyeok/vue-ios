@@ -1,14 +1,14 @@
 <template>
   <div class="i-app">
-    <div class="i-main-area" ref="main">
+    <iMainView class="i-main-area" ref="main">
       <div class="i-header-area">
         <slot name="header"/>
       </div>
       <div class="i-main-view">
         <slot name="main"/>
       </div>
-    </div>
-    <div class="i-sub-area">
+    </iMainView>
+    <iSubView class="i-sub-area">
       <iNavigationBar static="true"
         :title="subNavigationTitle"
         v-if="showSubTitle"
@@ -16,7 +16,7 @@
       <div class="i-sub-view">
         <slot name="sub"/>
       </div>
-    </div>
+    </iSubView>
     <div class="i-alert-area">
       <slot name="alert"/>
     </div>
@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import iMainView from '@/components/_iMainView'
+import iSubView from '@/components/_iSubView'
 import iNavigationBar from '@/components/iNavigationBar'
 
 export default {
@@ -40,6 +42,8 @@ export default {
     }
   },
   components: {
+    iMainView,
+    iSubView,
     iNavigationBar
   },
   mounted () {
