@@ -1,21 +1,21 @@
 <template>
   <div class="i-app">
-    <iMainView class="i-main-area" ref="main">
-      <div class="i-header-area">
-        <slot name="header"/>
+    <div class="i-main-area">
+      <div class="test">
+        Hello
       </div>
-      <div class="i-main-view">
-        <slot name="main"/>
+      <div class="i-main-content">        
+        <iMainView ref="main">
+          <slot name="main"/>
+        </iMainView>      
       </div>
-    </iMainView>
-    <iSubView class="i-sub-area">
+    </div>
+    <iSubView>
       <iNavigationBar static="true"
         :title="subNavigationTitle"
         v-if="showSubTitle"
       />
-      <div class="i-sub-view">
-        <slot name="sub"/>
-      </div>
+      <slot name="sub"/>
     </iSubView>
     <div class="i-alert-area">
       <slot name="alert"/>
@@ -73,33 +73,34 @@ html, body, .i-app {
 .i-app {
   overflow: hidden;
 
-  .i-main-area, .i-sub-area {
+  .i-main-area {
     position: relative;
     height: 100%;
-    overflow-y: auto;
-  }
 
-  .i-main-area {
-    @media only screen and (min-width: 320px) {
-      width: 100%;
+    & {
+      @media only screen and (min-width: 320px) {
+        width: 100%;
+      }
+
+      @media only screen and (min-width: 700px), screen and (min-width: 768px) {
+        border-right: 1px solid $light-border-color;
+        width: 37%;
+        float: left;
+      }
     }
 
-    @media only screen and (min-width: 700px), screen and (min-width: 768px) {
-      border-right: 1px solid $light-border-color;
-      width: 37%;
-      float: left;
-    }
-  }
-
-  .i-sub-area {
-    @media only screen and (min-width: 320px) {
-      width: 100%;
-    }
-
-    @media only screen and (min-width: 700px), screen and (min-width: 768px) {
-      width: 63%;
-      float: right;
+    .i-main-content {
+      overflow-y: auto;
+      height: 100%;
     }
   }
+}
+
+.test {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: red;
 }
 </style>
