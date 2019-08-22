@@ -113,7 +113,7 @@ html, body, .i-app {
       text-align: center;
       z-index: 1;
       border-bottom: 1px solid;
-      border-color: $light-background-color;
+      border-color: $light-border-color;
       background-color: $light-background-color;
 
       @media only screen and (min-width: 320px) {
@@ -147,13 +147,11 @@ html, body, .i-app {
       height: 100%;
 
       @media only screen and (min-width: 320px) {
-        height: 2.5rem;
-        line-height: 2.5rem;
+        padding-top: 2.5rem;
       }
 
       @media only screen and (min-width: 768px), (min-width: 1224px) {
-        height: 3rem;
-        line-height: 3rem;
+        padding-top: 3rem;
       }
     }
   }
