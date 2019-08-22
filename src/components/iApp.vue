@@ -1,13 +1,21 @@
 <template>
   <div class="i-app">
     <div class="i-main-area">
-      <div class="test">
-        Hello
+      <div class="i-header">
+        <div class="i-header__left">
+          <slot name="headerLeft"/>
+        </div>
+        <div class="i-header__title">
+          {{ title }}
+        </div>
+        <div class="i-header__right">
+          <slot name="headerRight"/>
+        </div>
       </div>
-      <div class="i-main-content">        
+      <div class="i-main-content">
         <iMainView ref="main">
           <slot name="main"/>
-        </iMainView>      
+        </iMainView>
       </div>
     </div>
     <iSubView>
@@ -30,6 +38,15 @@ import iNavigationBar from '@/components/iNavigationBar'
 
 export default {
   name: 'iApp',
+  props: {
+    header: {
+      type: Boolean
+    },
+    title: {
+      type: String,
+      default: 'Header'
+    }
+  },
   data () {
     return {
       subNavigationTitle: 'Sub view',
@@ -89,18 +106,56 @@ html, body, .i-app {
       }
     }
 
+    .i-header {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      text-align: center;
+      z-index: 1;
+      border-bottom: 1px solid;
+      border-color: $light-background-color;
+      background-color: $light-background-color;
+
+      @media only screen and (min-width: 320px) {
+        height: 2.5rem;
+        line-height: 2.5rem;
+      }
+
+      @media only screen and (min-width: 768px), (min-width: 1224px) {
+        height: 3rem;
+        line-height: 3rem;
+      }
+
+      &__left {
+        float: left;
+      }
+
+      &__right {
+        float: right;
+      }
+
+      &__title {
+        display: inline-block;
+        color: #000;
+        font-size: .9rem;
+        font-weight: bold;
+      }
+    }
+
     .i-main-content {
       overflow-y: auto;
       height: 100%;
+
+      @media only screen and (min-width: 320px) {
+        height: 2.5rem;
+        line-height: 2.5rem;
+      }
+
+      @media only screen and (min-width: 768px), (min-width: 1224px) {
+        height: 3rem;
+        line-height: 3rem;
+      }
     }
   }
-}
-
-.test {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-  background-color: red;
 }
 </style>
