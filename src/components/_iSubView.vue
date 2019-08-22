@@ -10,3 +10,9 @@ export default {
 }
 
 </script>
+
+<style lang="scss">
+.i-sub-view {
+  width: 100%;
+}
+</style>
