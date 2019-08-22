@@ -114,7 +114,21 @@ html, body, .i-app {
         width: 100%;
       }
 
-      @media only screen and (min-width: 700px), screen and (min-width: 768px) {
+      @media only screen
+        and (min-width: 700px)
+        and (orientation: portrait),
+        screen and (min-width: 768px)
+        and (orientation: portrait) {
+        border-right: 1px solid $light-border-color;
+        width: 42%;
+        float: left;
+      }
+
+      @media only screen
+        and (min-width: 700px)
+        and (orientation: landscape),
+        screen and (min-width: 768px)
+        and (orientation: landscape) {
         border-right: 1px solid $light-border-color;
         width: 37%;
         float: left;
@@ -140,11 +154,24 @@ html, body, .i-app {
     height: 100%;
 
     & {
-      @media only screen and (min-width: 320px) {
+      @media only screen and (min-width: 320px){
         width: 0%;
       }
 
-      @media only screen and (min-width: 700px), screen and (min-width: 768px) {
+      @media only screen
+        and (min-width: 700px)
+        and (orientation: portrait),
+        screen and (min-width: 768px)
+        and (orientation: portrait) {
+        width: 58%;
+        float: right;
+      }
+
+      @media only screen
+        and (min-width: 700px)
+        and (orientation: landscape),
+        screen and (min-width: 768px)
+        and (orientation: landscape) {
         width: 63%;
         float: right;
       }
@@ -154,7 +181,7 @@ html, body, .i-app {
       overflow-y: auto;
       height: 100%;
 
-      @media only screen and (min-width: 320px) {
+      @media only screen and (min-width: 320px)and (orientation: landscape) {
         padding-top: 2.5rem;
       }
 
