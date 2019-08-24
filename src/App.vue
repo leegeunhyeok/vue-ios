@@ -1,14 +1,12 @@
 <template>
   <iApp>
-    <div>
-      <iButton slot="titleLeft">L</iButton>
-      <iSearchField slot="largeArea"
-        width="100%"
-        maxlength="15"
-        v-model="textValue"
-      />
-      <iButton slot="titleRight">R</iButton>
-    </div>
+    <iButton slot="headerLeft">L</iButton>
+    <iButton slot="headerRight">R</iButton>
+    <iSearchField slot="largeHeader"
+      width="100%"
+      maxlength="15"
+      v-model="textValue"
+    />
     <Main slot="main" 
       :alert="showAlert"
       @onAlert="onAlert"
