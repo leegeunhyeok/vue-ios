@@ -25,6 +25,9 @@
           >
             {{ largeTitle }}
           </div>
+          <div class="i-main__large-header__area">
+            <slot name="largeHeader"/>
+          </div>
         </div>
         <iMainView ref="main">
           <slot name="main"/>
@@ -34,13 +37,13 @@
     <div class="i-sub">
       <div class="i-header">
         <div class="i-header__left">
-          <slot name="headerLeft"/>
+          <slot name="subHeaderLeft"/>
         </div>
         <div class="i-header__title">
           {{ subTitle }}
         </div>
         <div class="i-header__right">
-          <slot name="headerRight"/>
+          <slot name="subHeaderRight"/>
         </div>
       </div>
       <div class="i-sub__content" ref="sub">
@@ -229,6 +232,14 @@ html, body, .i-app {
         background-color: $light-background-color;
         font-weight: bold;
         font-size: 2rem;
+        z-index: 1;
+      }
+
+      &__area {
+        position: absolute;
+        bottom: .5rem;
+        width: 100%;
+        padding: 0 1rem;
       }
     }
   }
@@ -281,7 +292,7 @@ html, body, .i-app {
   top: 0;
   width: 100%;
   text-align: center;
-  z-index: 1;
+  z-index: 2;
   border-bottom: 1px solid;
   border-color: $light-border-color;
   background-color: $light-background-color;
