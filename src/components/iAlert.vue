@@ -45,9 +45,6 @@ export default {
       showDialog: false
     }
   },
-  beforeDestroy () {
-    console.log('aa')
-  },
   methods: {
     close () {
       this.showDialog = false
