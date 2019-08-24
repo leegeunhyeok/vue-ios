@@ -7,7 +7,7 @@
       maxlength="15"
       v-model="textValue"
     />
-    <Main slot="main" 
+    <Main slot="main"
       :alert="showAlert"
       @onAlert="onAlert"
       v-if="isMain"

@@ -142,7 +142,7 @@ export default {
       if (!this.largeHeader) {
         return 1
       }
-      
+
       let opacity = 1
       const scrollTop = ev.target.scrollTop
       if (this.rootEmPx * 4 >= scrollTop) {
