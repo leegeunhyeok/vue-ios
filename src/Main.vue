@@ -1,5 +1,5 @@
 <template>
-  <iView :type="'main'">
+  <iView>
     <iTable :title="tableTitle">
       <iTableItem>
         <iLabel class="left">Switch {{ switchValue ? 'On' : 'Off' }}</iLabel>
@@ -34,18 +34,18 @@
     <iTable :title="'Register'">
       <iTableItem>
         <iTextField
-          :width="'100%'"
-          :maxlength="15"
-          :placeholder="'Name'"
+          width="100%"
+          maxlength="15"
+          placeholder="Name"
           v-model="idValue"
         />
       </iTableItem>
       <iTableItem>
         <iTextField
-          :width="'100%'"
-          :maxlength="15"
-          :type="'password'"
-          :placeholder="'Password'"
+          width="100%"
+          maxlength="15"
+          type="password"
+          placeholder="Password"
           v-model="passwordValue"
         />
       </iTableItem>
@@ -56,33 +56,25 @@
         <h2>Password: {{ passwordValue }}</h2>
       </iTableItem>
     </iTable>
-    <iAlert title="iAlert"
-      @close="switchValue = false"
-      v-show="switchValue"
-    >
-      <div slot="body">Hello, world!</div>
-      <div slot="footer">
-        <iButton :bold="true" @click="switchValue = false">Cancel</iButton>
-        <iButton @click="switchValue = false">Ok</iButton>
-      </div>
-    </iAlert>
   </iView>
 </template>
 
 <script>
-import iAlert from '@/components/iAlert'
 import iButton from '@/components/iButton'
 import iLabel from '@/components/iLabel'
-import iNavigationBar from '@/components/iNavigationBar'
 import iSwitch from '@/components/iSwitch'
 import iTable from '@/components/iTable'
 import iTableItem from '@/components/iTableItem'
 import iTextField from '@/components/iTextField'
-import iSearchField from '@/components/iSearchField'
 import iView from '@/components/iView'
 
 export default {
   name: 'app',
+  props: {
+    alert: {
+      type: Boolean
+    }
+  },
   data () {
     return {
       appTitle: 'iOS Vue',
@@ -96,16 +88,24 @@ export default {
     }
   },
   components: {
-    iAlert,
     iButton,
     iLabel,
-    iNavigationBar,
     iSwitch,
     iTable,
     iTableItem,
     iTextField,
-    iSearchField,
     iView
+  },
+  watch: {
+    alert (newVal) {
+      this.switchValue = newVal
+    },
+    switchValue (newVal) {
+      this.$emit('onAlert', newVal)
+    }
+  },
+  created () {
+    this.switchValue = this.alert
   }
 }
 </script>

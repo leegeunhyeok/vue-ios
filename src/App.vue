@@ -1,18 +1,29 @@
 <template>
   <iApp>
-    <iNavigationBar :title="appTitle" :largeTitle="largeTitle">
-      <iButton slot="titleLeft">L</iButton>
-      <iSearchField slot="largeArea"
-        :width="'100%'"
-        :maxlength="15"
-        v-model="textValue"
-      />
-      <iButton slot="titleRight">R</iButton>
-    </iNavigationBar>
-    <iNavigator>
-      <Main v-if="isMain" slot="main"/>
-      <Sub v-if="true" slot="sub"/>
-    </iNavigator>
+    <iButton slot="headerLeft">L</iButton>
+    <iButton slot="headerRight">R</iButton>
+    <iSearchField slot="largeHeader"
+      width="100%"
+      maxlength="15"
+      v-model="textValue"
+    />
+    <Main slot="main"
+      :alert="showAlert"
+      @onAlert="onAlert"
+      v-if="isMain"
+    />
+    <Sub slot="sub" v-if="true"/>
+    <iAlert slot="alert"
+      title="iAlert"
+      @close="showAlert = false"
+      v-show="showAlert"
+    >
+      <div slot="body">{{ textValue }}</div>
+      <div slot="footer">
+        <iButton bold="true" @click="showAlert = false">Cancel</iButton>
+        <iButton @click="showAlert = false">Ok</iButton>
+      </div>
+    </iAlert>
   </iApp>
 </template>
 
@@ -20,15 +31,8 @@
 import iApp from '@/components/iApp'
 import iAlert from '@/components/iAlert'
 import iButton from '@/components/iButton'
-import iLabel from '@/components/iLabel'
 import iNavigationBar from '@/components/iNavigationBar'
-import iNavigator from '@/components/iNavigator'
-import iSwitch from '@/components/iSwitch'
-import iTable from '@/components/iTable'
-import iTableItem from '@/components/iTableItem'
-import iTextField from '@/components/iTextField'
 import iSearchField from '@/components/iSearchField'
-import iView from '@/components/iView'
 
 import Main from './Main.vue'
 import Sub from './Sub.vue'
@@ -39,15 +43,8 @@ export default {
     iApp,
     iAlert,
     iButton,
-    iLabel,
     iNavigationBar,
-    iNavigator,
-    iSwitch,
-    iTable,
-    iTableItem,
-    iTextField,
     iSearchField,
-    iView,
     Main,
     Sub
   },
@@ -57,12 +54,8 @@ export default {
       largeTitle: 'iOS Vue',
       textValue: 'Hello, world!',
       tableTitle: 'iTable',
-      switchValue: false,
-      idValue: '',
-      passwordValue: '',
-      count: 0,
       isMain: true,
-      view: 'main'
+      showAlert: false
     }
   },
   mounted () {
@@ -76,6 +69,11 @@ export default {
     meta.name = 'viewport'
     meta.content = metaContents.join(',')
     document.head.appendChild(meta)
+  },
+  methods: {
+    onAlert ($event) {
+      this.showAlert = $event
+    }
   }
 }
 </script>

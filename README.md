@@ -31,20 +31,85 @@ npm install vue-ios
 
 - Preview
 
-<img src="https://user-images.githubusercontent.com/26512984/60678481-965b0380-9ebf-11e9-9092-4832cbad9a55.gif">
+<img src="https://user-images.githubusercontent.com/26512984/63633927-1107fa00-c68b-11e9-8950-62ace6544d74.gif">
 
 ```html
 <template>
-  <iView id="app">
-    <iNavigationBar :title="appTitle" :largeTitle="largeTitle">
-      <iButton slot="titleLeft">L</iButton>
-      <iSearchField slot="largeArea"
-        :width="'100%'"
-        :maxlength="15"
-        v-model="textValue"
-      />
-      <iButton slot="titleRight">R</iButton>
-    </iNavigationBar>
+  <!-- App.vue -->
+  <iApp>
+    <iButton slot="headerLeft">L</iButton>
+    <iButton slot="headerRight">R</iButton>
+    <iSearchField slot="largeHeader"
+      width="100%"
+      maxlength="15"
+      v-model="textValue"
+    />
+    <Main slot="main"
+      :alert="showAlert"
+      @onAlert="onAlert"
+      v-if="isMain"
+    />
+    <Sub slot="sub" v-if="true"/>
+    <iAlert slot="alert"
+      title="iAlert"
+      @close="showAlert = false"
+      v-show="showAlert"
+    >
+      <div slot="body">{{ textValue }}</div>
+      <div slot="footer">
+        <iButton bold="true" @click="showAlert = false">Cancel</iButton>
+        <iButton @click="showAlert = false">Ok</iButton>
+      </div>
+    </iAlert>
+  </iApp>
+</template>
+
+<script>
+import {
+  iApp,
+  iAlert,
+  iButton,
+  iNavigationBar,
+  iSearchField
+} from 'vue-ios'
+
+import Main from './Main.vue'
+import Sub from './Sub.vue'
+
+export default {
+  name: 'app',
+  components: {
+    iApp,
+    iAlert,
+    iButton,
+    iNavigationBar,
+    iSearchField,
+    Main,
+    Sub
+  },
+  data () {
+    return {
+      appTitle: 'iOS Vue',
+      largeTitle: 'iOS Vue',
+      textValue: 'Hello, world!',
+      tableTitle: 'iTable',
+      isMain: true,
+      showAlert: false
+    }
+  },
+  methods: {
+    onAlert ($event) {
+      this.showAlert = $event
+    }
+  }
+}
+</script>
+```
+
+```html
+<template>
+  <!-- Main.vue -->
+  <iView>
     <iTable :title="tableTitle">
       <iTableItem>
         <iLabel class="left">Switch {{ switchValue ? 'On' : 'Off' }}</iLabel>
@@ -79,18 +144,18 @@ npm install vue-ios
     <iTable :title="'Register'">
       <iTableItem>
         <iTextField
-          :width="'100%'"
-          :maxlength="15"
-          :placeholder="'Name'"
+          width="100%"
+          maxlength="15"
+          placeholder="Name"
           v-model="idValue"
         />
       </iTableItem>
       <iTableItem>
         <iTextField
-          :width="'100%'"
-          :maxlength="15"
-          :type="'password'"
-          :placeholder="'Password'"
+          width="100%"
+          maxlength="15"
+          type="password"
+          placeholder="Password"
           v-model="passwordValue"
         />
       </iTableItem>
@@ -101,35 +166,27 @@ npm install vue-ios
         <h2>Password: {{ passwordValue }}</h2>
       </iTableItem>
     </iTable>
-    <iAlert title="iAlert"
-      @close="switchValue = false"
-      v-show="switchValue"
-    >
-      <div slot="body">Hello, world!</div>
-      <div slot="footer">
-        <iButton :bold="true" @click="switchValue = false">Cancel</iButton>
-        <iButton @click="switchValue = false">Ok</iButton>
-      </div>
-    </iAlert>
   </iView>
 </template>
 
 <script>
 import {
-  iAlert,
   iButton,
   iLabel,
-  iNavigationBar,
   iSwitch,
   iTable,
   iTableItem,
   iTextField,
-  iSearchField,
   iView
-} from 'vue-ios'
+} from 'ios-vue'
 
 export default {
   name: 'app',
+  props: {
+    alert: {
+      type: Boolean
+    }
+  },
   data () {
     return {
       appTitle: 'iOS Vue',
@@ -143,49 +200,67 @@ export default {
     }
   },
   components: {
-    iAlert,
     iButton,
     iLabel,
-    iNavigationBar,
-    iSearchField,
     iSwitch,
     iTable,
     iTableItem,
     iTextField,
     iView
   },
-  mounted () {
-    const metaContents = [
-      'initial-scale=1.0',
-      'width=device-width',
-      'user-scalable=no',
-      'maximum-scale=1'
-    ]
-    const meta = document.createElement('meta')
-    meta.name = 'viewport'
-    meta.content = metaContents.join(',')
-    document.head.appendChild(meta)
+  watch: {
+    alert (newVal) {
+      this.switchValue = newVal
+    },
+    switchValue (newVal) {
+      this.$emit('onAlert', newVal)
+    }
+  },
+  created () {
+    this.switchValue = this.alert
   }
 }
 </script>
+```
 
-<style>
+```html
+<template>
+  <!-- Sub.vue -->
+  <iView>
+    <iTable :title="'Sub'">
+      <iTableItem>
+        <iLabel class="left">Switch {{ switchValue ? 'On' : 'Off' }}</iLabel>
+        <iSwitch class="right" v-model="switchValue"/>
+      </iTableItem>
+    </iTable>
+  </iView>
+</template>
 
-html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+<script>
+import {
+  iLabel,
+  iSwitch,
+  iTable,
+  iTableItem,
+  iView
+} from 'vue-ios'
+
+export default {
+  name: 'app',
+  data () {
+    return {
+      switchValue: false
+    }
+  },
+  components: {
+    iLabel,
+    iSwitch,
+    iTable,
+    iTableItem,
+    iView
+  }
 }
-
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-</style>
+</script>
 ```
 
 ## Project setup

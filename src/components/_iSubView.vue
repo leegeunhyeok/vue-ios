@@ -1,18 +1,18 @@
 <template>
-  <div class="i-board">
+  <div class="i-sub-view">
     <slot/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'iBoard',
+  name: 'iSubView'
 }
 
 </script>
 
 <style lang="scss">
-.i-board {
+.i-sub-view {
   width: 100%;
 }
 </style>

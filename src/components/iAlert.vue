@@ -1,6 +1,7 @@
 <template>
   <transition name="fade"
     @before-enter="showDialog = true"
+    @before-leave="showDialog = false"
   >
     <div class="i-alert">
       <div class="i-alert__mask"

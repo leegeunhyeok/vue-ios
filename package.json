@@ -1,6 +1,6 @@
 {
   "name": "vue-ios",
-  "version": "0.0.1-alpha.9",
+  "version": "0.0.1-alpha.10",
   "description": "iOS Style components library for Vue.js",
   "main": "dist/vue-ios.umd.js",
   "module": "dist/vue-ios.esm.js",
@@ -9,7 +9,7 @@
     "./sfc": "src/vue-ios.vue"
   },
   "scripts": {
-    "dev": "vue serve --open src/App.vue",
+    "dev": "vue serve --open src/main.js",
     "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
     "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/vue-ios.umd.js",
     "build:es": "rollup --config build/rollup.config.js --format es --file dist/vue-ios.esm.js",

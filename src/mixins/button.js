@@ -13,7 +13,7 @@ export default {
       type: String
     },
     bold: {
-      type: Boolean
+      type: Boolean | String
     }
   },
   methods: {

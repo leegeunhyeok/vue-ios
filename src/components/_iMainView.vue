@@ -1,23 +1,18 @@
 <template>
-  <div class="i-view">
+  <div class="i-main-view">
     <slot/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'iView'
+  name: 'iMainView'
 }
 
 </script>
 
 <style lang="scss">
-.i-view {
+.i-main-view {
   width: 100%;
-  height: 100%;
-
-  .i-table:nth-last-child(1) {
-    padding-bottom: 2rem;
-  }
 }
 </style>
