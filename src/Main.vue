@@ -70,6 +70,11 @@ import iView from '@/components/iView'
 
 export default {
   name: 'app',
+  props: {
+    alert: {
+      type: Boolean
+    }
+  },
   data () {
     return {
       appTitle: 'iOS Vue',
@@ -92,9 +97,15 @@ export default {
     iView
   },
   watch: {
+    alert (newVal) {
+      this.switchValue = newVal
+    },
     switchValue (newVal) {
       this.$emit('onAlert', newVal)
     }
+  },
+  created () {
+    this.switchValue = this.alert
   }
 }
 </script>

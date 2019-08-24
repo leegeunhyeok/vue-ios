@@ -1,6 +1,7 @@
 <template>
   <transition name="fade"
     @before-enter="showDialog = true"
+    @before-leave="showDialog = false"
   >
     <div class="i-alert">
       <div class="i-alert__mask"
@@ -43,6 +44,9 @@ export default {
     return {
       showDialog: false
     }
+  },
+  beforeDestroy () {
+    console.log('aa')
   },
   methods: {
     close () {

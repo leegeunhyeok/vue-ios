@@ -9,7 +9,11 @@
       />
       <iButton slot="titleRight">R</iButton>
     </div>
-    <Main slot="main" @onAlert="onAlert" v-if="isMain"/>
+    <Main slot="main" 
+      :alert="showAlert"
+      @onAlert="onAlert"
+      v-if="isMain"
+    />
     <Sub slot="sub" v-if="true"/>
     <iAlert slot="alert"
       title="iAlert"
