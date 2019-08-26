@@ -1,5 +1,7 @@
 <template>
-  <iApp>
+  <iApp
+    :defaultSubView="'sub-1'"
+  >
     <template v-slot:headerLeft>
       <iButton>L</iButton>
     </template>
@@ -13,15 +15,17 @@
         v-model="textValue"
       />
     </template>
-    <template v-slot:main>
+    <template v-slot:main="{ pushView }">
       <Main
         :alert="showAlert"
+        @onPushView="pushView"
         @onAlert="onAlert"
         v-if="isMain"
       />
     </template>
-    <template v-slot:sub>
-      <Sub v-if="true"/>
+    <template v-slot:sub="{ isActive }">
+      <Sub1 v-show="isActive('sub-1')"/>
+      <Sub2 v-show="isActive('sub-2')"/>
     </template>
     <template v-slot:alert>
       <iAlert
@@ -48,7 +52,8 @@ import iButton from '@/components/iButton'
 import iSearchField from '@/components/iSearchField'
 
 import Main from './Main.vue'
-import Sub from './Sub.vue'
+import Sub1 from './Sub1.vue'
+import Sub2 from './Sub2.vue'
 
 export default {
   name: 'app',
@@ -58,7 +63,8 @@ export default {
     iButton,
     iSearchField,
     Main,
-    Sub
+    Sub1,
+    Sub2
   },
   data () {
     return {

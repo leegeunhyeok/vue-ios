@@ -1,9 +1,12 @@
 <template>
   <iView>
-    <iTable :title="'Sub'">
+    <iTable :title="'Sub 2'">
       <iTableItem>
         <iLabel class="left">Switch {{ switchValue ? 'On' : 'Off' }}</iLabel>
         <iSwitch class="right" v-model="switchValue"/>
+      </iTableItem>
+      <iTableItem>
+        <iLabel class="left">This is sub2 view!!</iLabel>
       </iTableItem>
     </iTable>
   </iView>

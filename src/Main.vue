@@ -101,6 +101,7 @@ export default {
       this.switchValue = newVal
     },
     switchValue (newVal) {
+      this.$emit('onPushView', 'sub-' + (!newVal ? '1' : '2'))
       this.$emit('onAlert', newVal)
     }
   },
