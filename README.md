@@ -269,6 +269,7 @@ export default {
 - :full_moon_with_face: ~~iOS Light theme~~ [ :heavy_check_mark: ]
 - :new_moon_with_face: iOS Dark theme [ :x: ]
 - :couple: ~~iOS Split view~~ [ :heavy_check_mark: ]
+- :arrow_heading_up: View routing [ :x: ]
 - :zap: Improve performance!
 - :christmas_tree: Like a real iOS style!
 - :baby: Make easy to use!
