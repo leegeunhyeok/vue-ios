@@ -1,9 +1,7 @@
-import './global'
-
 import iAlert from './components/iAlert.vue'
+import iApp from './components/iApp.vue'
 import iButton from './components/iButton.vue'
 import iLabel from './components/iLabel.vue'
-import iNavigationBar from './components/iNavigationBar.vue'
 import iSearchField from './components/iSearchField.vue'
 import iSwitch from './components/iSwitch.vue'
 import iTable from './components/iTable.vue'
@@ -13,9 +11,9 @@ import iView from './components/iView.vue'
 
 const components = {
   iAlert,
+  iApp,
   iButton,
   iLabel,
-  iNavigationBar,
   iSearchField,
   iSwitch,
   iTable,
@@ -52,9 +50,9 @@ if (GlobalVue) {
 
 export {
   iAlert,
+  iApp,
   iButton,
   iLabel,
-  iNavigationBar,
   iSearchField,
   iSwitch,
   iTable,
