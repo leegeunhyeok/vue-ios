@@ -51,10 +51,12 @@
       </div>
       <div class="i-sub__content" ref="sub">
         <iSubView>
-          <slot name="sub"
-            :pushView="pushView"
-            :isActive="isActive"
-          />
+          <transition-group :name="'view-backward'">
+            <slot name="sub"
+              :pushView="pushView"
+              :isActive="isActive"
+            />
+          </transition-group>
         </iSubView>
       </div>
     </div>
@@ -99,7 +101,8 @@ export default {
       rootEmPx: 12,
       largeHeaderPositionPx: 0,
       opacity: 1,
-      activedViewName: ''
+      activedViewName: '',
+      toggle: true
     }
   },
   computed: {
@@ -190,6 +193,7 @@ html, body, .i-app {
   .i-main {
     position: relative;
     height: 100%;
+    overflow-x: hidden;
 
     & {
       @media only screen and (min-width: 320px) {
@@ -259,6 +263,7 @@ html, body, .i-app {
   .i-sub {
     position: relative;
     height: 100%;
+    overflow-x: hidden;
 
     & {
       @media only screen and (min-width: 320px){
@@ -334,4 +339,61 @@ html, body, .i-app {
     font-weight: bold;
   }
 }
+
+/* Forward transition effect */
+.view-forward-enter-active {
+  z-index: 1;
+  transition: .4s;
+}
+
+.view-forward-leave-active {
+  z-index: 0;
+  transition: .4s;
+}
+
+.view-forward-leave-to {
+  transform: translateX(-20%);
+}
+
+.view-forward-leave {
+  z-index: 0;
+  transform: translateX(0);
+}
+
+.view-forward-enter {
+  z-index: 1;
+  transform: translateX(100%);
+}
+
+/* Backward transition effect */
+.view-backward-enter-active {
+  z-index: 0;
+  transition: .4s;
+}
+
+.view-backward-leave-active {
+  z-index: 1;
+  transition: .4s;
+}
+
+.view-backward-leave-to {
+  z-index: 1;
+  transform: translateX(100%);
+}
+
+.view-backward-leave {
+  z-index: 1;
+  transform: translateX(0);
+}
+
+.view-backward-enter {
+  z-index: 0;
+  transform: translateX(-20%);
+}
+
+.view-backward-enter-to {
+  z-index: 0;
+  transform: translateX(0);
+}
+
 </style>
