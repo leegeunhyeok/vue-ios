@@ -30,7 +30,10 @@
           </div>
         </div>
         <iMainView ref="main">
-          <slot name="main"/>
+          <slot name="main"
+            :pushView="pushView"
+            :isActive="isActive"
+          />
         </iMainView>
       </div>
     </div>
@@ -48,7 +51,10 @@
       </div>
       <div class="i-sub__content" ref="sub">
         <iSubView>
-          <slot name="sub"/>
+          <slot name="sub"
+            :pushView="pushView"
+            :isActive="isActive"
+          />
         </iSubView>
       </div>
     </div>
@@ -65,6 +71,9 @@ import iSubView from './_iSubView.vue'
 export default {
   name: 'iApp',
   props: {
+    defaultSubView: {
+      type: String
+    },
     header: {
       type: Boolean
     },
@@ -89,7 +98,8 @@ export default {
     return {
       rootEmPx: 12,
       largeHeaderPositionPx: 0,
-      opacity: 1
+      opacity: 1,
+      activedViewName: ''
     }
   },
   computed: {
@@ -115,6 +125,7 @@ export default {
   },
   created () {
     this.opacity = this.largeHeader ? 0 : 1
+    this.activedViewName = this.defaultSubView
   },
   mounted () {
     this.getRem()
@@ -152,6 +163,12 @@ export default {
         opacity = Math.min(opacity, 1)
       }
       this.opacity = opacity
+    },
+    pushView (name) {
+      this.activedViewName = name
+    },
+    isActive (name) {
+      return this.activedViewName === name
     }
   }
 }
