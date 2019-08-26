@@ -59,9 +59,8 @@
 </template>
 
 <script>
-import iMainView from '@/components/_iMainView'
-import iSubView from '@/components/_iSubView'
-import iNavigationBar from '@/components/iNavigationBar'
+import iMainView from './_iMainView'
+import iSubView from './_iSubView'
 
 export default {
   name: 'iApp',
@@ -112,8 +111,7 @@ export default {
   },
   components: {
     iMainView,
-    iSubView,
-    iNavigationBar
+    iSubView
   },
   created () {
     this.opacity = this.largeHeader ? 0 : 1
