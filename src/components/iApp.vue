@@ -152,9 +152,6 @@ export default {
         opacity = Math.min(opacity, 1)
       }
       this.opacity = opacity
-    },
-    watchWindowSize () {
-      this.$iWidth = event.target.innerWidth
     }
   }
 }
