@@ -23,7 +23,7 @@
 <h1 align="center">vue-ios</h1>
 <p align="center">🍎 iOS Style components library for Vue.js</p>
 
-## Usage
+## :sparkles: Usage
 
 ```bash
 npm install vue-ios
@@ -263,7 +263,18 @@ export default {
 </script>
 ```
 
-## Project setup
+## :pencil: TODO
+
+- :sparkles: ~~iOS Style basic components~~ [ :heavy_check_mark: ]
+- :full_moon_with_face: ~~iOS Light theme~~ [ :heavy_check_mark: ]
+- :new_moon_with_face: iOS Dark theme [ :x: ]
+- :couple: ~~iOS Split view~~ [ :heavy_check_mark: ]
+- :zap: Improve performance!
+- :christmas_tree: Like a real iOS style!
+- :baby: Make easy to use!
+- :sparkling_heart: More components and features!
+
+## :construction_worker: Project setup
 ```
 npm i
 ```
