@@ -18,7 +18,7 @@ export default {
   justify-content: space-between;
   position: relative;
   width: 100%;
-  padding: .5rem 1rem;
+  padding: .3rem 1rem;
   vertical-align: top;
   background-color: $light-pure-color;
 
