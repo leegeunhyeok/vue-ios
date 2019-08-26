@@ -1,29 +1,43 @@
 <template>
   <iApp>
-    <iButton slot="headerLeft">L</iButton>
-    <iButton slot="headerRight">R</iButton>
-    <iSearchField slot="largeHeader"
-      width="100%"
-      maxlength="15"
-      v-model="textValue"
-    />
-    <Main slot="main"
-      :alert="showAlert"
-      @onAlert="onAlert"
-      v-if="isMain"
-    />
-    <Sub slot="sub" v-if="true"/>
-    <iAlert slot="alert"
-      title="iAlert"
-      @close="showAlert = false"
-      v-show="showAlert"
-    >
-      <div slot="body">{{ textValue }}</div>
-      <div slot="footer">
-        <iButton bold="true" @click="showAlert = false">Cancel</iButton>
-        <iButton @click="showAlert = false">Ok</iButton>
-      </div>
-    </iAlert>
+    <template v-slot:headerLeft>
+      <iButton>L</iButton>
+    </template>
+    <template v-slot:headerRight>
+      <iButton>R</iButton>
+    </template>
+    <template v-slot:largeHeader>
+      <iSearchField
+        :width="'100%'"
+        :maxlength="'15'"
+        v-model="textValue"
+      />
+    </template>
+    <template v-slot:main>
+      <Main
+        :alert="showAlert"
+        @onAlert="onAlert"
+        v-if="isMain"
+      />
+    </template>
+    <template v-slot:sub>
+      <Sub v-if="true"/>
+    </template>
+    <template v-slot:alert>
+      <iAlert
+        :title="'iAlert'"
+        @close="showAlert = false"
+        v-show="showAlert"
+      >
+        <template v-slot:body>{{ textValue }}</template>
+        <template v-slot:footer>
+          <div>
+            <iButton bold="true" @click="showAlert = false">Cancel</iButton>
+            <iButton @click="showAlert = false">Ok</iButton>
+          </div>
+        </template>
+      </iAlert>
+    </template>
   </iApp>
 </template>
 
@@ -31,7 +45,6 @@
 import iApp from '@/components/iApp'
 import iAlert from '@/components/iAlert'
 import iButton from '@/components/iButton'
-import iNavigationBar from '@/components/iNavigationBar'
 import iSearchField from '@/components/iSearchField'
 
 import Main from './Main.vue'
@@ -43,7 +56,6 @@ export default {
     iApp,
     iAlert,
     iButton,
-    iNavigationBar,
     iSearchField,
     Main,
     Sub
