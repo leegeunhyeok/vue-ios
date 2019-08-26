@@ -24,8 +24,8 @@
       />
     </template>
     <template v-slot:sub="{ isActive }">
-      <Sub1 v-show="isActive('sub-1')"/>
-      <Sub2 v-show="isActive('sub-2')"/>
+      <Sub1 v-show="isActive('sub-1')" :key="1"/>
+      <Sub2 v-show="isActive('sub-2')" :key="2"/>
     </template>
     <template v-slot:alert>
       <iAlert
