@@ -59,8 +59,8 @@
 </template>
 
 <script>
-import iMainView from './_iMainView'
-import iSubView from './_iSubView'
+import iMainView from './_iMainView.vue'
+import iSubView from './_iSubView.vue'
 
 export default {
   name: 'iApp',
