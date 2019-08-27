@@ -1,65 +1,69 @@
 <template>
   <div class="i-app">
-    <div class="i-main">
-      <div class="i-header"
-        :style="headerStyle"
-      >
-        <div class="i-header__left">
-          <slot name="headerLeft"/>
-        </div>
-        <div class="i-header__title"
-          :style="headerTitleOpacity"
+    <transition-group
+      :name="mainViewTransition"
+    >
+      <div class="i-main" :key="'main'">
+        <div class="i-header"
+          :style="headerStyle"
         >
-          {{ title }}
-        </div>
-        <div class="i-header__right">
-          <slot name="headerRight"/>
-        </div>
-      </div>
-      <div class="i-main__content" ref="main">
-        <div class="i-main__large-header"
-          v-if="largeHeader"
-        >
-          <div class="i-main__large-header__title"
-            :style="largeHeaderPosition"
+          <div class="i-header__left">
+            <slot name="headerLeft"/>
+          </div>
+          <div class="i-header__title"
+            :style="headerTitleOpacity"
           >
-            {{ largeTitle }}
+            {{ title }}
           </div>
-          <div class="i-main__large-header__area">
-            <slot name="largeHeader"/>
+          <div class="i-header__right">
+            <slot name="headerRight"/>
           </div>
         </div>
-        <iMainView ref="main">
-          <slot name="main"
-            :pushView="pushView"
-            :isActive="isActive"
-          />
-        </iMainView>
-      </div>
-    </div>
-    <div class="i-sub">
-      <div class="i-header">
-        <div class="i-header__left">
-          <slot name="subHeaderLeft"/>
-        </div>
-        <div class="i-header__title">
-          {{ subTitle }}
-        </div>
-        <div class="i-header__right">
-          <slot name="subHeaderRight"/>
-        </div>
-      </div>
-      <div class="i-sub__content" ref="sub">
-        <iSubView>
-          <transition-group :name="'view-backward'">
-            <slot name="sub"
+        <div class="i-main__content" ref="main">
+          <div class="i-main__large-header"
+            v-if="largeHeader"
+          >
+            <div class="i-main__large-header__title"
+              :style="largeHeaderPosition"
+            >
+              {{ largeTitle }}
+            </div>
+            <div class="i-main__large-header__area">
+              <slot name="largeHeader"/>
+            </div>
+          </div>
+          <iMainView ref="main">
+            <slot name="main"
               :pushView="pushView"
               :isActive="isActive"
             />
-          </transition-group>
-        </iSubView>
+          </iMainView>
+        </div>
       </div>
-    </div>
+      <div class="i-sub" :key="'sub'">
+        <div class="i-header">
+          <div class="i-header__left">
+            <slot name="subHeaderLeft"/>
+          </div>
+          <div class="i-header__title">
+            {{ subTitle }}
+          </div>
+          <div class="i-header__right">
+            <slot name="subHeaderRight"/>
+          </div>
+        </div>
+        <div class="i-sub__content" ref="sub">
+          <iSubView>
+            <transition-group :name="subViewTransition">
+              <slot name="sub"
+                :pushView="pushView"
+                :isActive="isActive"
+              />
+            </transition-group>
+          </iSubView>
+        </div>
+      </div>
+    </transition-group>
     <div class="i-alert-area">
       <slot name="alert"/>
     </div>
@@ -98,6 +102,7 @@ export default {
   },
   data () {
     return {
+      appWidth: 0,
       rootEmPx: 12,
       largeHeaderPositionPx: 0,
       opacity: 1,
@@ -106,6 +111,12 @@ export default {
     }
   },
   computed: {
+    mainViewTransition () {
+      return 'view-forward'
+    },
+    subViewTransition () {
+      return 'view-forward'
+    },
     headerStyle () {
       return {
         'border-color': `rgba(197, 197, 200, ${this.opacity})`
@@ -131,8 +142,8 @@ export default {
     this.activedViewName = this.defaultSubView
   },
   mounted () {
-    this.getRem()
-    window.addEventListener('resize', this.getRem)
+    this.updateAppUI()
+    window.addEventListener('resize', this.updateAppUI)
     this.$refs.main.addEventListener('scroll', this.updateScrollUI)
     this.$refs.sub.addEventListener('scroll', this.updateScrollUI)
   },
@@ -142,6 +153,12 @@ export default {
     this.$refs.sub.removeEventListener('scroll', this.updateScrollUI)
   },
   methods: {
+    updateAppUI (ev) {
+      if (ev) {
+        this.appWidth = ev.target.innerWidth
+      }
+      this.getRem()
+    },
     getRem () {
       this.rootEmPx = parseFloat(
         getComputedStyle(document.body)
