@@ -1,57 +1,74 @@
 <template>
   <div class="i-app">
-    <div class="i-main">
-      <div class="i-header"
-        :style="headerStyle"
+    <transition-group
+      :name="mainViewTransition"
+    >
+      <div class="i-main" :key="'main'"
+        :style="mainStyle"
+        v-show="activedViewName === 'main' || isSplited"
       >
-        <div class="i-header__left">
-          <slot name="headerLeft"/>
-        </div>
-        <div class="i-header__title"
-          :style="headerTitleOpacity"
+        <div class="i-header"
+          :style="headerStyle"
         >
-          {{ title }}
-        </div>
-        <div class="i-header__right">
-          <slot name="headerRight"/>
-        </div>
-      </div>
-      <div class="i-main__content" ref="main">
-        <div class="i-main__large-header"
-          v-if="largeHeader"
-        >
-          <div class="i-main__large-header__title"
-            :style="largeHeaderPosition"
+          <div class="i-header__left">
+            <slot name="headerLeft"/>
+          </div>
+          <div class="i-header__title"
+            :style="headerTitleOpacity"
           >
-            {{ largeTitle }}
+            {{ title }}
           </div>
-          <div class="i-main__large-header__area">
-            <slot name="largeHeader"/>
+          <div class="i-header__right">
+            <slot name="headerRight"/>
           </div>
         </div>
-        <iMainView ref="main">
-          <slot name="main"/>
-        </iMainView>
-      </div>
-    </div>
-    <div class="i-sub">
-      <div class="i-header">
-        <div class="i-header__left">
-          <slot name="subHeaderLeft"/>
+        <div class="i-main__content" ref="main">
+          <div class="i-main__large-header"
+            v-if="largeHeader"
+          >
+            <div class="i-main__large-header__title"
+              :style="largeHeaderPosition"
+            >
+              {{ largeTitle }}
+            </div>
+            <div class="i-main__large-header__area">
+              <slot name="largeHeader"/>
+            </div>
+          </div>
+          <iMainView ref="main">
+            <slot name="main"
+              :pushView="pushView"
+              :isActive="isActive"
+            />
+          </iMainView>
         </div>
-        <div class="i-header__title">
-          {{ subTitle }}
+      </div>
+      <div class="i-sub" :key="'sub'"
+        v-show="activedViewName !== 'main' || isSplited"
+      >
+        <div class="i-header">
+          <div class="i-header__left">
+            <slot name="subHeaderLeft"/>
+          </div>
+          <div class="i-header__title">
+            {{ subTitle }}
+          </div>
+          <div class="i-header__right">
+            <slot name="subHeaderRight"/>
+          </div>
         </div>
-        <div class="i-header__right">
-          <slot name="subHeaderRight"/>
+        <div class="i-sub__content" ref="sub">
+          <iSubView>
+            <transition-group :name="subViewTransition">
+              <slot name="sub"
+                :pushView="pushView"
+                :isActive="isActive"
+              />
+            </transition-group>
+          </iSubView>
         </div>
       </div>
-      <div class="i-sub__content" ref="sub">
-        <iSubView>
-          <slot name="sub"/>
-        </iSubView>
-      </div>
-    </div>
+    </transition-group>
     <div class="i-alert-area">
       <slot name="alert"/>
     </div>
@@ -65,6 +82,9 @@ import iSubView from './_iSubView.vue'
 export default {
   name: 'iApp',
   props: {
+    defaultSubView: {
+      type: String
+    },
     header: {
       type: Boolean
     },
@@ -87,12 +107,44 @@ export default {
   },
   data () {
     return {
+      appWidth: 0,
       rootEmPx: 12,
+      isSplited: false,
+      transitionBlocked: false,
+      transitionUnlockTimer: null,
       largeHeaderPositionPx: 0,
-      opacity: 1
+      opacity: 1,
+      activedViewName: 'main',
+      toggle: true
+    }
+  },
+  watch: {
+    isSplited () {
+      clearTimeout(this.transitionUnlockTimer)
+      this.transitionBlocked = true
+      this.transitionUnlockTimer = setTimeout(() => {
+        this.transitionBlocked = false
+      }, 400)
     }
   },
   computed: {
+    mainViewTransition () {
+      if (this.transitionBlocked) {
+        return ''
+      }
+      return 'view-forward'
+    },
+    subViewTransition () {
+      if (this.transitionBlocked) {
+        return ''
+      }
+      return 'view-forward'
+    },
+    mainStyle () {
+      return {
+        'z-index': this.activedViewName === 'main' ? 1 : 0
+      }
+    },
     headerStyle () {
       return {
         'border-color': `rgba(197, 197, 200, ${this.opacity})`
@@ -117,8 +169,8 @@ export default {
     this.opacity = this.largeHeader ? 0 : 1
   },
   mounted () {
-    this.getRem()
-    window.addEventListener('resize', this.getRem)
+    this.updateAppUI()
+    window.addEventListener('resize', this.updateAppUI)
     this.$refs.main.addEventListener('scroll', this.updateScrollUI)
     this.$refs.sub.addEventListener('scroll', this.updateScrollUI)
   },
@@ -128,6 +180,21 @@ export default {
     this.$refs.sub.removeEventListener('scroll', this.updateScrollUI)
   },
   methods: {
+    updateAppUI (ev) {
+      this.appWidth = window.innerWidth
+      this.updateSplitState()
+      this.getRem()
+    },
+    updateSplitState () {
+      if (this.appWidth >= 700) {
+        this.isSplited = true
+        if (this.activedViewName === 'main') {
+          this.activedViewName = this.defaultSubView
+        }
+      } else {
+        this.isSplited = false
+      }
+    },
     getRem () {
       this.rootEmPx = parseFloat(
         getComputedStyle(document.body)
@@ -153,8 +220,11 @@ export default {
       }
       this.opacity = opacity
     },
-    watchWindowSize () {
-      this.$iWidth = event.target.innerWidth
+    pushView (name) {
+      this.activedViewName = name
+    },
+    isActive (name) {
+      return this.activedViewName === name
     }
   }
 }
@@ -168,6 +238,7 @@ html, body, .i-app {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 .i-app {
@@ -176,6 +247,8 @@ html, body, .i-app {
   .i-main {
     position: relative;
     height: 100%;
+    overflow-x: hidden;
+    background-color: $light-background-color;
 
     & {
       @media only screen and (min-width: 320px) {
@@ -243,12 +316,16 @@ html, body, .i-app {
   }
 
   .i-sub {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 100%;
+    overflow-x: hidden;
+    background-color: $light-background-color;
 
     & {
       @media only screen and (min-width: 320px){
-        width: 0%;
+        width: 100%;
       }
 
       @media only screen
@@ -256,6 +333,7 @@ html, body, .i-app {
         and (orientation: portrait),
         screen and (min-width: 768px)
         and (orientation: portrait) {
+        position: relative;
         width: 58%;
         float: right;
       }
@@ -265,6 +343,7 @@ html, body, .i-app {
         and (orientation: landscape),
         screen and (min-width: 768px)
         and (orientation: landscape) {
+        position: relative;
         width: 63%;
         float: right;
       }
@@ -320,4 +399,67 @@ html, body, .i-app {
     font-weight: bold;
   }
 }
+
+/* Forward transition effect */
+.view-forward-enter-active {
+  z-index: 1;
+  transition: .4s;
+}
+
+.view-forward-leave-active {
+  z-index: 0;
+  transition: .39s;
+}
+
+.view-forward-leave-to {
+  z-index: 0;
+  transform: translateX(-20%);
+}
+
+.view-forward-leave {
+  z-index: 0;
+  transform: translateX(0);
+}
+
+.view-forward-enter {
+  z-index: 1;
+  transform: translateX(100%);
+}
+
+.view-forward-enter-to {
+  z-index: 1;
+  transform: translateX(0);
+}
+
+/* Backward transition effect */
+.view-backward-enter-active {
+  z-index: 0;
+  transition: .4s;
+}
+
+.view-backward-leave-active {
+  z-index: 1;
+  transition: .39s;
+}
+
+.view-backward-leave-to {
+  z-index: 1;
+  transform: translateX(100%);
+}
+
+.view-backward-leave {
+  z-index: 1;
+  transform: translateX(0);
+}
+
+.view-backward-enter {
+  z-index: 0;
+  transform: translateX(-20%);
+}
+
+.view-backward-enter-to {
+  z-index: 0;
+  transform: translateX(0);
+}
+
 </style>

@@ -1,9 +1,12 @@
 <template>
   <iView>
-    <iTable :title="'Sub'">
+    <iTable :title="'Sub 2'">
       <iTableItem>
         <iLabel class="left">Switch {{ switchValue ? 'On' : 'Off' }}</iLabel>
         <iSwitch class="right" v-model="switchValue"/>
+      </iTableItem>
+      <iTableItem>
+        <iLabel class="left">This is sub2 view!!</iLabel>
       </iTableItem>
     </iTable>
   </iView>
@@ -17,7 +20,7 @@ import iTableItem from '@/components/iTableItem'
 import iView from '@/components/iView'
 
 export default {
-  name: 'app',
+  name: 'sub-2',
   data () {
     return {
       switchValue: false

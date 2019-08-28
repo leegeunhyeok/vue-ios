@@ -14,5 +14,10 @@ export default {
 <style lang="scss">
 .i-sub-view {
   width: 100%;
+
+  & .i-view {
+    position: absolute;
+    top: 2.5rem;
+  }
 }
 </style>

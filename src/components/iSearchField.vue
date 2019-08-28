@@ -40,11 +40,11 @@ $placeholder-color: #8e8e93;
   border: none;
   border-radius: 6px;
   font-size: 1rem;
-  -webkit-transition: $transition-speed;
-     -moz-transition: $transition-speed;
-      -ms-transition: $transition-speed;
-       -o-transition: $transition-speed;
-          transition: $transition-speed;
+  -webkit-transition: $transition-duration;
+     -moz-transition: $transition-duration;
+      -ms-transition: $transition-duration;
+       -o-transition: $transition-duration;
+          transition: $transition-duration;
 
   &::placeholder {
     color: $placeholder-color;

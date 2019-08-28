@@ -1,29 +1,46 @@
 <template>
-  <iApp>
-    <iButton slot="headerLeft">L</iButton>
-    <iButton slot="headerRight">R</iButton>
-    <iSearchField slot="largeHeader"
-      width="100%"
-      maxlength="15"
-      v-model="textValue"
-    />
-    <Main slot="main"
-      :alert="showAlert"
-      @onAlert="onAlert"
-      v-if="isMain"
-    />
-    <Sub slot="sub" v-if="true"/>
-    <iAlert slot="alert"
-      title="iAlert"
-      @close="showAlert = false"
-      v-show="showAlert"
-    >
-      <div slot="body">{{ textValue }}</div>
-      <div slot="footer">
-        <iButton bold="true" @click="showAlert = false">Cancel</iButton>
-        <iButton @click="showAlert = false">Ok</iButton>
-      </div>
-    </iAlert>
+  <iApp
+    :defaultSubView="'sub-1'"
+  >
+    <template v-slot:headerLeft>
+      <iButton>L</iButton>
+    </template>
+    <template v-slot:headerRight>
+      <iButton>R</iButton>
+    </template>
+    <template v-slot:largeHeader>
+      <iSearchField
+        :width="'100%'"
+        :maxlength="'15'"
+        v-model="textValue"
+      />
+    </template>
+    <template v-slot:main="{ pushView }">
+      <Main
+        :alert="showAlert"
+        @onPushView="pushView"
+        @onAlert="onAlert"
+      />
+    </template>
+    <template v-slot:sub="{ isActive }">
+      <Sub1 v-show="isActive('sub-1')" :key="1"/>
+      <Sub2 v-show="isActive('sub-2')" :key="2"/>
+    </template>
+    <template v-slot:alert>
+      <iAlert
+        :title="'iAlert'"
+        @close="showAlert = false"
+        v-show="showAlert"
+      >
+        <template v-slot:body>{{ textValue }}</template>
+        <template v-slot:footer>
+          <div>
+            <iButton bold="true" @click="showAlert = false">Cancel</iButton>
+            <iButton @click="showAlert = false">Ok</iButton>
+          </div>
+        </template>
+      </iAlert>
+    </template>
   </iApp>
 </template>
 
@@ -31,11 +48,11 @@
 import iApp from '@/components/iApp'
 import iAlert from '@/components/iAlert'
 import iButton from '@/components/iButton'
-import iNavigationBar from '@/components/iNavigationBar'
 import iSearchField from '@/components/iSearchField'
 
 import Main from './Main.vue'
-import Sub from './Sub.vue'
+import Sub1 from './Sub1.vue'
+import Sub2 from './Sub2.vue'
 
 export default {
   name: 'app',
@@ -43,18 +60,14 @@ export default {
     iApp,
     iAlert,
     iButton,
-    iNavigationBar,
     iSearchField,
     Main,
-    Sub
+    Sub1,
+    Sub2
   },
   data () {
     return {
-      appTitle: 'iOS Vue',
-      largeTitle: 'iOS Vue',
       textValue: 'Hello, world!',
-      tableTitle: 'iTable',
-      isMain: true,
       showAlert: false
     }
   },

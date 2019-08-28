@@ -59,11 +59,11 @@ $toggle-color-deactive: #eaeaeb;
     bottom: 0;
     border-radius: 1.083rem;
     background-color: $toggle-color-deactive;
-    -webkit-transition: $transition-speed;
-       -moz-transition: $transition-speed;
-        -ms-transition: $transition-speed;
-         -o-transition: $transition-speed;
-            transition: $transition-speed;
+    -webkit-transition: $transition-duration;
+       -moz-transition: $transition-duration;
+        -ms-transition: $transition-duration;
+         -o-transition: $transition-duration;
+            transition: $transition-duration;
 
     &:before {
       content: "";
@@ -75,11 +75,11 @@ $toggle-color-deactive: #eaeaeb;
       border-radius: 50%;
       box-shadow: 0px 1px 2px rgba(0, 0, 0, .2);
       background-color: #fff;
-      -webkit-transition: $transition-speed;
-         -moz-transition: $transition-speed;
-          -ms-transition: $transition-speed;
-           -o-transition: $transition-speed;
-              transition: $transition-speed;
+      -webkit-transition: $transition-duration;
+         -moz-transition: $transition-duration;
+          -ms-transition: $transition-duration;
+           -o-transition: $transition-duration;
+              transition: $transition-duration;
     }
   }
 }

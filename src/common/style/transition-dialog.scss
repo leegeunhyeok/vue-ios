@@ -1,7 +1,7 @@
 @import './common.scss';
 
 .dialog-enter-active, .dialog-leave-active {
-  transition: all .3s;
+  transition: all $transition-duration;
 }
 
 .dialog-enter {

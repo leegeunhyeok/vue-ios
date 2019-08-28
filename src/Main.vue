@@ -50,7 +50,7 @@
         />
       </iTableItem>
       <iTableItem>
-        <h2>ID:{{ idValue }}</h2>
+        <h2>ID: {{ idValue }}</h2>
       </iTableItem>
       <iTableItem>
         <h2>Password: {{ passwordValue }}</h2>
@@ -101,6 +101,7 @@ export default {
       this.switchValue = newVal
     },
     switchValue (newVal) {
+      this.$emit('onPushView', 'sub-' + (!newVal ? '1' : '2'))
       this.$emit('onAlert', newVal)
     }
   },
