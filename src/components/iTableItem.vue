@@ -1,12 +1,19 @@
 <template>
-  <div class="i-table-item">
+  <div class="i-table-item"
+    :class="{ selectable }"
+  >
     <slot/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'iTableItem'
+  name: 'iTableItem',
+  props: {
+    selectable: {
+      type: Boolean
+    }
+  }
 }
 </script>
 
@@ -21,6 +28,16 @@ export default {
   padding: .3rem 1rem;
   vertical-align: top;
   background-color: $light-pure-color;
+
+  &.selectable {
+    &:focus {
+      background-color: $light-pure-color;
+    }
+
+    &:hover:active {
+      background-color: $light-background-selected-color;
+    }
+  }
 
   &:before {
     content: "";
