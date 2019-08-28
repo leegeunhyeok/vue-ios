@@ -109,13 +109,12 @@ export default {
     return {
       appWidth: 0,
       rootEmPx: 12,
-      isSplited: true,
-      transitionBlocked: true,
+      isSplited: false,
+      transitionBlocked: false,
       transitionUnlockTimer: null,
       largeHeaderPositionPx: 0,
       opacity: 1,
       activedViewName: 'main',
-      prevActivedViewName: 'main',
       toggle: true
     }
   },
@@ -189,10 +188,11 @@ export default {
     updateSplitState () {
       if (this.appWidth >= 700) {
         this.isSplited = true
-        this.activedViewName = this.defaultSubView
+        if (this.activedViewName === 'main') {
+          this.activedViewName = this.defaultSubView
+        }
       } else {
         this.isSplited = false
-        this.activedViewName = this.prevActivedViewName
       }
     },
     getRem () {
@@ -221,7 +221,6 @@ export default {
       this.opacity = opacity
     },
     pushView (name) {
-      this.prevActivedViewName = this.activedViewName
       this.activedViewName = name
     },
     isActive (name) {
