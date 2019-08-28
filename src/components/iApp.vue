@@ -4,7 +4,8 @@
       :name="mainViewTransition"
     >
       <div class="i-main" :key="'main'"
-        v-show="isSplited || true"
+        :style="mainStyle"
+        v-show="activedViewName === 'main' || isSplited"
       >
         <div class="i-header"
           :style="headerStyle"
@@ -43,7 +44,7 @@
         </div>
       </div>
       <div class="i-sub" :key="'sub'"
-        v-show="isSplited"
+        v-show="activedViewName !== 'main' || isSplited"
       >
         <div class="i-header">
           <div class="i-header__left">
@@ -109,18 +110,41 @@ export default {
       appWidth: 0,
       rootEmPx: 12,
       isSplited: true,
+      transitionBlocked: true,
+      transitionUnlockTimer: null,
       largeHeaderPositionPx: 0,
       opacity: 1,
-      activedViewName: '',
+      activedViewName: 'main',
+      prevActivedViewName: 'main',
       toggle: true
+    }
+  },
+  watch: {
+    isSplited () {
+      clearTimeout(this.transitionUnlockTimer)
+      this.transitionBlocked = true
+      this.transitionUnlockTimer = setTimeout(() => {
+        this.transitionBlocked = false
+      }, 400)
     }
   },
   computed: {
     mainViewTransition () {
+      if (this.transitionBlocked) {
+        return ''
+      }
       return 'view-forward'
     },
     subViewTransition () {
+      if (this.transitionBlocked) {
+        return ''
+      }
       return 'view-forward'
+    },
+    mainStyle () {
+      return {
+        'z-index': this.activedViewName === 'main' ? 1 : 0
+      }
     },
     headerStyle () {
       return {
@@ -144,7 +168,6 @@ export default {
   },
   created () {
     this.opacity = this.largeHeader ? 0 : 1
-    this.activedViewName = this.defaultSubView
   },
   mounted () {
     this.updateAppUI()
@@ -164,7 +187,13 @@ export default {
       this.getRem()
     },
     updateSplitState () {
-      this.isSplited = this.appWidth >= 700
+      if (this.appWidth >= 700) {
+        this.isSplited = true
+        this.activedViewName = this.defaultSubView
+      } else {
+        this.isSplited = false
+        this.activedViewName = this.prevActivedViewName
+      }
     },
     getRem () {
       this.rootEmPx = parseFloat(
@@ -192,6 +221,7 @@ export default {
       this.opacity = opacity
     },
     pushView (name) {
+      this.prevActivedViewName = this.activedViewName
       this.activedViewName = name
     },
     isActive (name) {
@@ -218,6 +248,7 @@ html, body, .i-app {
     position: relative;
     height: 100%;
     overflow-x: hidden;
+    background-color: $light-background-color;
 
     & {
       @media only screen and (min-width: 320px) {
@@ -285,13 +316,16 @@ html, body, .i-app {
   }
 
   .i-sub {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 100%;
     overflow-x: hidden;
+    background-color: $light-background-color;
 
     & {
       @media only screen and (min-width: 320px){
-        width: 0%;
+        width: 100%;
       }
 
       @media only screen
@@ -299,6 +333,7 @@ html, body, .i-app {
         and (orientation: portrait),
         screen and (min-width: 768px)
         and (orientation: portrait) {
+        position: relative;
         width: 58%;
         float: right;
       }
@@ -308,6 +343,7 @@ html, body, .i-app {
         and (orientation: landscape),
         screen and (min-width: 768px)
         and (orientation: landscape) {
+        position: relative;
         width: 63%;
         float: right;
       }
@@ -372,10 +408,11 @@ html, body, .i-app {
 
 .view-forward-leave-active {
   z-index: 0;
-  transition: .4s;
+  transition: .39s;
 }
 
 .view-forward-leave-to {
+  z-index: 0;
   transform: translateX(-20%);
 }
 
@@ -389,6 +426,11 @@ html, body, .i-app {
   transform: translateX(100%);
 }
 
+.view-forward-enter-to {
+  z-index: 1;
+  transform: translateX(0);
+}
+
 /* Backward transition effect */
 .view-backward-enter-active {
   z-index: 0;
@@ -397,7 +439,7 @@ html, body, .i-app {
 
 .view-backward-leave-active {
   z-index: 1;
-  transition: .4s;
+  transition: .39s;
 }
 
 .view-backward-leave-to {
