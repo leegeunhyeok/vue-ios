@@ -1,0 +1,12 @@
+$app-width: (
+  default: 0,        // Default
+  i-se: 320px,       // iPhone SE, 5
+  i: 375px,          // iPhone 6, 7, 8
+  i-x: 375px,        // iPhone X
+  i-plus: 414px,     // iPhone+ 6, 7, 8
+  ipad: 768px,       // iPad
+  ipad-pro: 1024px,  // iPad Pro
+  sm: 320px,         // Common Small
+  md: 768px,         // Common Medium
+  lg: 1224px         // Common Large
+) !default;

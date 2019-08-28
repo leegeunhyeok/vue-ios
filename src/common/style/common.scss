@@ -1,14 +1,8 @@
-$ios-blue-color: #097afe;
-$ios-lightblue-color: #cce4fd;
-
-$light-pure-color: #ffffff;
-$light-background-color: #f2f2f7;
-$light-border-color: #c5c5c8;
-$light-primary-text-color: #000000;
-$light-secondary-text-color: #6d6d72;
-$dark-background-color: #1c1c1e;
-$dark-border-color: #3d3d40;
-$transition-speed: .3s;
+@import 'mixins/breakpoint';
+@import 'mixins/disable-highlight';
+@import 'variables/breakpoint';
+@import 'variables/color';
+@import 'variables/transition';
 
 @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap');
 
@@ -24,15 +18,16 @@ html {
   , Arial
   , sans-serif;
 
-  @media only screen and (min-width: 320px) {
+
+  @include app-breakpoint(sm) {
     font-size: 16px;
   }
 
-  @media only screen and (min-width: 768px) {
+  @include app-breakpoint(md) {
     font-size: 16px;
   }
 
-  @media only screen and (min-width: 1224px) {
+  @include app-breakpoint(lg) {
     font-size: 16px;
   }
 }
