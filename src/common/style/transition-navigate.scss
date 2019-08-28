@@ -1,9 +1,0 @@
-@import './common.scss';
-
-.navigate-enter-active, .navigate-leave-active {
-  transition: opacity $transition-speed;
-}
-
-.navigate-enter, .navigate-leave-to {
-  opacity: 0;
-}

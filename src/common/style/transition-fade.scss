@@ -1,7 +1,7 @@
 @import './common.scss';
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity $transition-speed;
+  transition: opacity $transition-duration;
 }
 
 .fade-enter, .fade-leave-to {
