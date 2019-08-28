@@ -3,7 +3,9 @@
     <transition-group
       :name="mainViewTransition"
     >
-      <div class="i-main" :key="'main'">
+      <div class="i-main" :key="'main'"
+        v-show="isSplited || true"
+      >
         <div class="i-header"
           :style="headerStyle"
         >
@@ -40,7 +42,9 @@
           </iMainView>
         </div>
       </div>
-      <div class="i-sub" :key="'sub'">
+      <div class="i-sub" :key="'sub'"
+        v-show="isSplited"
+      >
         <div class="i-header">
           <div class="i-header__left">
             <slot name="subHeaderLeft"/>
@@ -104,6 +108,7 @@ export default {
     return {
       appWidth: 0,
       rootEmPx: 12,
+      isSplited: true,
       largeHeaderPositionPx: 0,
       opacity: 1,
       activedViewName: '',
@@ -154,10 +159,12 @@ export default {
   },
   methods: {
     updateAppUI (ev) {
-      if (ev) {
-        this.appWidth = ev.target.innerWidth
-      }
+      this.appWidth = window.innerWidth
+      this.updateSplitState()
       this.getRem()
+    },
+    updateSplitState () {
+      this.isSplited = this.appWidth >= 700
     },
     getRem () {
       this.rootEmPx = parseFloat(
