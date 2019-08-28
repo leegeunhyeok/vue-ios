@@ -50,7 +50,7 @@
         />
       </iTableItem>
       <iTableItem>
-        <h2>ID:{{ idValue }}</h2>
+        <h2>ID: {{ idValue }}</h2>
       </iTableItem>
       <iTableItem>
         <h2>Password: {{ passwordValue }}</h2>

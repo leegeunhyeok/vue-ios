@@ -20,7 +20,7 @@ import iTableItem from '@/components/iTableItem'
 import iView from '@/components/iView'
 
 export default {
-  name: 'app',
+  name: 'sub-2',
   data () {
     return {
       switchValue: false

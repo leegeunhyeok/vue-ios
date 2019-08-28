@@ -20,7 +20,6 @@
         :alert="showAlert"
         @onPushView="pushView"
         @onAlert="onAlert"
-        v-if="isMain"
       />
     </template>
     <template v-slot:sub="{ isActive }">
@@ -68,11 +67,7 @@ export default {
   },
   data () {
     return {
-      appTitle: 'iOS Vue',
-      largeTitle: 'iOS Vue',
       textValue: 'Hello, world!',
-      tableTitle: 'iTable',
-      isMain: true,
       showAlert: false
     }
   },
